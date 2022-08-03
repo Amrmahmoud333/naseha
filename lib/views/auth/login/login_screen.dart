@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -15,12 +16,13 @@ class LoginScreen extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-        color: Colors.blue.shade100,
+        color: const Color(0xff90AFC5),
         child: ListView(
           children: [
             SizedBox(height: h(30)),
             const CircleAvatar(
               backgroundImage: NetworkImage(
+                  // logo
                   'https://icons-for-free.com/download-icon-avatar+person+profile+user+icon-1320166578424287581_512.png'),
               maxRadius: 50,
               backgroundColor: Colors.transparent,
@@ -45,16 +47,16 @@ class LoginScreen extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: w(20)),
                             child: TextField(
-                              style: const TextStyle(color: Colors.blue),
+                              style: const TextStyle(color: Colors.black),
                               decoration: InputDecoration(
-                                hintText: 'Email',
+                                hintText: 'البريد الالكتروني',
                                 helperStyle: TextStyle(
                                   color: Colors.blue.shade200,
                                 ),
                                 border: InputBorder.none,
                                 icon: const Icon(
                                   Icons.email,
-                                  color: Colors.blue,
+                                  color: Color(0xff336B87),
                                 ),
                               ),
                             ),
@@ -62,23 +64,23 @@ class LoginScreen extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(
                                 left: w(20), right: w(20), bottom: h(10)),
-                            child: Divider(
-                              color: Colors.blue.shade400,
+                            child: const Divider(
+                              color: Color(0xff336B87),
                             ),
                           ),
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: w(20)),
                             child: TextField(
-                              style: const TextStyle(color: Colors.blue),
+                              style: const TextStyle(color: Colors.black),
                               decoration: InputDecoration(
-                                hintText: 'Password',
+                                hintText: 'كلمة المرور',
                                 helperStyle: TextStyle(
                                   color: Colors.blue.shade200,
                                 ),
                                 border: InputBorder.none,
                                 icon: const Icon(
                                   Icons.lock,
-                                  color: Colors.blue,
+                                  color: Color(0xff336B87),
                                 ),
                               ),
                             ),
@@ -86,8 +88,8 @@ class LoginScreen extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(
                                 left: w(20), right: w(20), bottom: h(10)),
-                            child: Divider(
-                              color: Colors.blue.shade400,
+                            child: const Divider(
+                              color: Color(0xff336B87),
                             ),
                           ),
                         ],
@@ -96,13 +98,14 @@ class LoginScreen extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
                       CircleAvatar(
                         radius: 40,
-                        backgroundColor: Colors.blue.shade600,
-                        child: const Icon(
+                        backgroundColor: Color(0xff336B87),
+                        child: Icon(
                           Icons.person,
                           size: 50,
+                          color: Colors.white,
                         ),
                       )
                     ],
@@ -113,25 +116,39 @@ class LoginScreen extends StatelessWidget {
                       alignment: Alignment.bottomCenter,
                       child: ElevatedButton(
                         style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            const Color(0xff336B87),
+                          ),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),
-                              side: BorderSide(
-                                color: Colors.blue.shade600,
+                              side: const BorderSide(
+                                color: Color(0xff336B87),
                               ),
                             ),
                           ),
                         ),
                         onPressed: () {},
-                        child: Text('login'),
+                        child: const AutoSizeText(
+                          'تسجيل الدخول',
+                          style: TextStyle(fontSize: 18),
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            Center(child: Text('Sign up')),
+            Center(
+              child: TextButton(
+                onPressed: () {},
+                child: const AutoSizeText(
+                  'إنشاء حساب',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -147,7 +164,7 @@ class RoundedDiagonalPathClipper extends CustomClipper<Path> {
       ..lineTo(size.width, size.height)
       ..lineTo(size.width, 0.0)
       ..quadraticBezierTo(size.width, 0.0, size.width - 20.0, 0.0)
-      ..lineTo(40.0, 70.0)
+      ..lineTo(50.0, 70.0)
       ..quadraticBezierTo(10.0, 85.0, 0.0, 120.0)
       ..close();
     return path;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
 import 'package:naseha/views/auth/login/screens/login_screen.dart';
 import 'package:naseha/views/auth/register/screens/register_screen.dart';
 

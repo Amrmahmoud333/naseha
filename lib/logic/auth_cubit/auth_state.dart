@@ -11,3 +11,10 @@ class LoginLoading extends AuthState {}
 class LoginSccuess extends AuthState {}
 
 class LoginError extends AuthState {}
+
+// firebase Logout states
+class LogoutLoading extends AuthState {}
+
+class LogoutSccuess extends AuthState {}
+
+class LogoutError extends AuthState {}

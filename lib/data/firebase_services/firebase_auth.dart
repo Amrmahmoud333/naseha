@@ -7,4 +7,15 @@ class FirebaseServicesAuth extends FirebaseAuthRepo {
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
   }
+
+  @override
+  Future logout() async {
+    try {
+      return await FirebaseAuth.instance.signOut();
+    } catch (e) {
+      // ignore: avoid_print
+      print(e.toString());
+      rethrow;
+    }
+  }
 }

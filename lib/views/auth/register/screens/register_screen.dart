@@ -2,8 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:naseha/views/shared/rounded_clipper.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +108,13 @@ class LoginScreen extends StatelessWidget {
                                   color: Color(0xff336B87),
                                 ),
                               ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(
+                                left: w(20), right: w(20), bottom: h(10)),
+                            child: const Divider(
+                              color: Color(0xff336B87),
                             ),
                           ),
                         ],

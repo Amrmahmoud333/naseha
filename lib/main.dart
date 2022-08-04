@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:naseha/views/auth/login/login_screen.dart';
+import 'package:naseha/views/auth/login/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Naseha',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

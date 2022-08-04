@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
@@ -43,6 +45,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future register({required String email, required String password}) async {
     emit(RegisterLoading());
     try {
+      await _firebaseAuthRepo.register(email: email, password: password);
       emit(RegisterSccuess());
     } on FirebaseAuthException catch (error) {
       print(error.toString());

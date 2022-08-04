@@ -1,10 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
 import 'package:naseha/views/shared/rounded_clipper.dart';
 
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
-
+  RegisterScreen({Key? key}) : super(key: key);
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double h(double n) {
@@ -48,6 +51,7 @@ class RegisterScreen extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: w(20)),
                             child: TextField(
+                              controller: emailController,
                               style: const TextStyle(color: Colors.black),
                               decoration: InputDecoration(
                                 hintText: 'البريد الالكتروني',
@@ -72,33 +76,10 @@ class RegisterScreen extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: w(20)),
                             child: TextField(
+                              controller: passwordController,
                               style: const TextStyle(color: Colors.black),
                               decoration: InputDecoration(
                                 hintText: 'كلمة المرور',
-                                helperStyle: TextStyle(
-                                  color: Colors.blue.shade200,
-                                ),
-                                border: InputBorder.none,
-                                icon: const Icon(
-                                  Icons.lock,
-                                  color: Color(0xff336B87),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(
-                                left: w(20), right: w(20), bottom: h(10)),
-                            child: const Divider(
-                              color: Color(0xff336B87),
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.symmetric(horizontal: w(20)),
-                            child: TextField(
-                              style: const TextStyle(color: Colors.black),
-                              decoration: InputDecoration(
-                                hintText: ' اعادة كلمة المرور',
                                 helperStyle: TextStyle(
                                   color: Colors.blue.shade200,
                                 ),
@@ -139,26 +120,42 @@ class RegisterScreen extends StatelessWidget {
                     height: h(420),
                     child: Align(
                       alignment: Alignment.bottomCenter,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            const Color(0xff336B87),
-                          ),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                              side: const BorderSide(
-                                color: Color(0xff336B87),
+                      child: BlocBuilder<AuthCubit, AuthState>(
+                        builder: (context, state) {
+                          return ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                const Color(0xff336B87),
+                              ),
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: const BorderSide(
+                                    color: Color(0xff336B87),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: const AutoSizeText(
-                          'إنشاء حساب',
-                          style: TextStyle(fontSize: 18),
-                        ),
+                            onPressed: () {
+                              context.read<AuthCubit>().register(
+                                  email: emailController.text.trim(),
+                                  password: passwordController.text.trim());
+                            },
+                            child: state is RegisterLoading
+                                ? SizedBox(
+                                    width: w(12),
+                                    height: h(12),
+                                    child: const CircularProgressIndicator(
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                : const AutoSizeText(
+                                    'إنشاء حساب',
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                          );
+                        },
                       ),
                     ),
                   ),

@@ -142,8 +142,8 @@ class LoginScreen extends StatelessWidget {
                             ),
                             onPressed: () {
                               context.read<AuthCubit>().login(
-                                  emailController.text.trim(),
-                                  passwordController.text.trim());
+                                  email: emailController.text.trim(),
+                                  password: passwordController.text.trim());
                             },
                             child: state is LoginLoading
                                 ? SizedBox(

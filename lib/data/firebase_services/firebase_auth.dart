@@ -3,7 +3,7 @@ import 'package:naseha/data/repositories/firebase_auth_repo.dart';
 
 class FirebaseServicesAuth extends FirebaseAuthRepo {
   @override
-  Future<void> login(String email, String password) async {
+  Future<void> login({required String email, required String password}) async {
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
   }
@@ -17,5 +17,12 @@ class FirebaseServicesAuth extends FirebaseAuthRepo {
       print(e.toString());
       rethrow;
     }
+  }
+
+  @override
+  Future<void> register(
+      {required String email, required String password}) async {
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email, password: password);
   }
 }

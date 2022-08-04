@@ -12,10 +12,10 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._firebaseAuthRepo) : super(AuthInitial());
 
   User? user;
-  Future login(String email, String password) async {
+  Future login({required String email, required String password}) async {
     emit(LoginLoading());
     try {
-      await _firebaseAuthRepo.login(email, password);
+      await _firebaseAuthRepo.login(email: email, password: password);
       user = FirebaseAuth.instance.currentUser;
       emit(LoginSccuess());
     } on FirebaseAuthException catch (error) {
@@ -37,6 +37,16 @@ class AuthCubit extends Cubit<AuthState> {
     } catch (error) {
       print(error);
       emit(LogoutError());
+    }
+  }
+
+  Future register({required String email, required String password}) async {
+    emit(RegisterLoading());
+    try {
+      emit(RegisterSccuess());
+    } on FirebaseAuthException catch (error) {
+      print(error.toString());
+      emit(RegisterError());
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/data/firebase_services/firebase_auth.dart';
 import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
+import 'package:naseha/views/auth/auth_page.dart';
 import 'package:naseha/views/auth/login/screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:naseha/views/home_page/home_page.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
               if (snapshot.hasData) {
                 return const HomePage();
               } else {
-                return LoginScreen();
+                return AuthPage();
               }
             }),
       ),

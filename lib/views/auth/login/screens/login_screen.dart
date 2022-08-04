@@ -1,12 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
-import 'package:naseha/views/auth/register/screens/register_screen.dart';
 import 'package:naseha/views/shared/rounded_clipper.dart';
 
 class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  final VoidCallback onClickedRegister;
+  LoginScreen({Key? key, required this.onClickedRegister}) : super(key: key);
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -166,16 +167,23 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             Center(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => RegisterScreen()),
-                  );
-                },
-                child: const AutoSizeText(
-                  'إنشاء حساب',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
+              child: RichText(
+                text: TextSpan(
+                    style:
+                        const TextStyle(fontSize: 18, color: Color(0xff2A3132)),
+                    text: 'لا تمتلك حساب؟ ',
+                    children: [
+                      TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = onClickedRegister,
+                        text: 'إنشاء حساب',
+                        style: const TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontSize: 18,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ]),
               ),
             ),
           ],

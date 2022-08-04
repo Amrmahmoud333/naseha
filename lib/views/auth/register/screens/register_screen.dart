@@ -1,11 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
 import 'package:naseha/views/shared/rounded_clipper.dart';
 
 class RegisterScreen extends StatelessWidget {
-  RegisterScreen({Key? key}) : super(key: key);
+  final VoidCallback onClickedLogin;
+  RegisterScreen({Key? key, required this.onClickedLogin}) : super(key: key);
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   @override
@@ -160,6 +162,26 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+            ),
+            Center(
+              child: RichText(
+                text: TextSpan(
+                    style:
+                        const TextStyle(fontSize: 18, color: Color(0xff2A3132)),
+                    text: 'تمتلك حساب؟ ',
+                    children: [
+                      TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = onClickedLogin,
+                        text: 'تسجيل الدخول',
+                        style: const TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontSize: 18,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ]),
               ),
             ),
           ],

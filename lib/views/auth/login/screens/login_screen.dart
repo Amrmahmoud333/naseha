@@ -4,7 +4,10 @@ import 'package:naseha/views/auth/register/screens/register_screen.dart';
 import 'package:naseha/views/shared/rounded_clipper.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +52,7 @@ class LoginScreen extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: w(20)),
                             child: TextField(
+                              controller: emailController,
                               style: const TextStyle(color: Colors.black),
                               decoration: InputDecoration(
                                 hintText: 'البريد الالكتروني',
@@ -73,6 +77,7 @@ class LoginScreen extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: w(20)),
                             child: TextField(
+                              controller: passwordController,
                               style: const TextStyle(color: Colors.black),
                               decoration: InputDecoration(
                                 hintText: 'كلمة المرور',

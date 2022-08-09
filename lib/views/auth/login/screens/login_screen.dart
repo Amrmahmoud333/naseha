@@ -1,7 +1,9 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:naseha/views/auth/login/widgets/elevated_login_button.dart';
 import 'package:naseha/views/auth/login/widgets/login_form.dart';
+import 'package:naseha/views/forget_password/forget_password_screen.dart';
 import 'package:naseha/views/shared/logo_widget.dart';
 import 'package:naseha/views/shared/person_container.dart';
 
@@ -40,6 +42,22 @@ class LoginScreen extends StatelessWidget {
                 ],
               ),
             ),
+            Center(
+              child: GestureDetector(
+                child: const AutoSizeText(
+                  'نسيت كلمة السر',
+                  style: TextStyle(
+                      color: Colors.white,
+                      decoration: TextDecoration.underline),
+                ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: ((context) => ForgetPasswordScreen()),
+                  ));
+                },
+              ),
+            ),
+            SizedBox(height: h(10)),
             Center(
               child: RichText(
                 text: TextSpan(

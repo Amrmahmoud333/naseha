@@ -25,4 +25,9 @@ class FirebaseServicesAuth extends FirebaseAuthRepo {
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
   }
+
+  @override
+  Future<void> forgetPaassword({required String email}) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+  }
 }

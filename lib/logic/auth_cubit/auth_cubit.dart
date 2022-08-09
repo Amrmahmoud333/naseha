@@ -49,4 +49,15 @@ class AuthCubit extends Cubit<AuthState> {
       emit(RegisterError());
     }
   }
+
+  Future forgetPassword({required String email}) async {
+    emit(ForegetPasswordLoading());
+    try {
+      await _firebaseAuthRepo.forgetPaassword(email: email);
+      emit(ForegetPasswordSccuess());
+    } on FirebaseAuthException catch (error) {
+      print(error.toString());
+      emit(ForegetPasswordError());
+    }
+  }
 }

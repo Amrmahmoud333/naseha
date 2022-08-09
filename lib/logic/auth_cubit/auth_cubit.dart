@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_print
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
 import 'package:naseha/data/repositories/firebase_auth_repo.dart';
 
@@ -50,12 +52,16 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future forgetPassword({required String email}) async {
+  Future forgetPassword({required String email, BuildContext? context}) async {
     emit(ForegetPasswordLoading());
     try {
       await _firebaseAuthRepo.forgetPaassword(email: email);
+      ScaffoldMessenger.of(context!).showSnackBar(const SnackBar(
+          content: Text('تم إرسال كلمة المور الي البريد الالكتروني')));
       emit(ForegetPasswordSccuess());
     } on FirebaseAuthException catch (error) {
+      ScaffoldMessenger.of(context!).showSnackBar(const SnackBar(
+          content: Text('لا يوجد مستخدم بهذا البريد الالكتروني')));
       print(error.toString());
       emit(ForegetPasswordError());
     }

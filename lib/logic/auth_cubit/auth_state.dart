@@ -25,3 +25,10 @@ class RegisterLoading extends AuthState {}
 class RegisterSccuess extends AuthState {}
 
 class RegisterError extends AuthState {}
+
+// firebase ForegetPassword states
+class ForegetPasswordLoading extends AuthState {}
+
+class ForegetPasswordSccuess extends AuthState {}
+
+class ForegetPasswordError extends AuthState {}

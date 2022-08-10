@@ -52,11 +52,36 @@ class _VerifyScreenState extends State<VerifyScreen> {
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0,
+              centerTitle: true,
               title: const AutoSizeText('تأكيد البريد الإلكتروني'),
             ),
-            body: const Center(
-                child: AutoSizeText(
-                    'تم إرسال رسالة تأكيد الي البريد الاكتروني, الرجاء التحقق منه')),
+            body: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const AutoSizeText(
+                    'تم إرسال رسالة تأكيد الي البريد الاكتروني, الرجاء التحقق منه',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 25),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      context.read<AuthCubit>().sendEmailVerification();
+                    },
+                    icon: const Icon(Icons.email_outlined),
+                    label: const AutoSizeText('ارسال رسالة أخري'),
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(60),
+                    ),
+                  )
+                ],
+              ),
+            ),
           );
   }
 }

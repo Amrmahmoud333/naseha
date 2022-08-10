@@ -2,7 +2,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 import 'package:naseha/data/repositories/firebase_auth_repo.dart';
 
 part 'auth_state.dart';
@@ -63,6 +62,18 @@ class AuthCubit extends Cubit<AuthState> {
           content: Text('لا يوجد مستخدم بهذا البريد الالكتروني')));
       print(error.toString());
       emit(ForegetPasswordError());
+    }
+  }
+
+  Future sendEmailVerification() async {
+    emit(SendVerificationEmailLoading());
+    try {
+      await _firebaseAuthRepo.sendVerificationEmail();
+
+      emit(SendVerificationEmailSccuess());
+    } on FirebaseAuthException catch (error) {
+      print(error.toString());
+      emit(SendVerificationEmailError());
     }
   }
 }

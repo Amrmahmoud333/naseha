@@ -32,3 +32,10 @@ class ForegetPasswordLoading extends AuthState {}
 class ForegetPasswordSccuess extends AuthState {}
 
 class ForegetPasswordError extends AuthState {}
+
+// firebase SendVerificationEmail states
+class SendVerificationEmailLoading extends AuthState {}
+
+class SendVerificationEmailSccuess extends AuthState {}
+
+class SendVerificationEmailError extends AuthState {}

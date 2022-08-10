@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
 import 'package:naseha/views/home_page/home_page.dart';
 
 class VerifyScreen extends StatefulWidget {
@@ -12,13 +16,31 @@ class VerifyScreen extends StatefulWidget {
 
 class _VerifyScreenState extends State<VerifyScreen> {
   bool isEmailVerified = false;
+  Timer? timer;
 
   @override
   void initState() {
     super.initState();
     isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
 
-    if (!isEmailVerified) {}
+    if (!isEmailVerified) {
+      context.read<AuthCubit>().sendEmailVerification();
+
+      timer = Timer.periodic(const Duration(seconds: 3), (_) async {
+        await FirebaseAuth.instance.currentUser!.reload();
+        isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+      });
+    }
+
+    if (isEmailVerified) {
+      timer?.cancel();
+    }
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -26,9 +48,15 @@ class _VerifyScreenState extends State<VerifyScreen> {
     return isEmailVerified
         ? const HomePage()
         : Scaffold(
+            backgroundColor: const Color(0xff90AFC5),
             appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
               title: const AutoSizeText('تأكيد البريد الإلكتروني'),
             ),
+            body: const Center(
+                child: AutoSizeText(
+                    'تم إرسال رسالة تأكيد الي البريد الاكتروني, الرجاء التحقق منه')),
           );
   }
 }

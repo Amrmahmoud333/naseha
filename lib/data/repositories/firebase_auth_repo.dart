@@ -4,4 +4,6 @@ abstract class FirebaseAuthRepo {
   Future<void> register({required String email, required String password});
 
   Future<void> forgetPaassword({required String email});
+
+  Future<void> sendVerificationEmail();
 }

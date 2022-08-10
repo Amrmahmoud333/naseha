@@ -30,4 +30,10 @@ class FirebaseServicesAuth extends FirebaseAuthRepo {
   Future<void> forgetPaassword({required String email}) async {
     await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
   }
+
+  @override
+  Future<void> sendVerificationEmail() async {
+    final user = FirebaseAuth.instance.currentUser!;
+    await user.sendEmailVerification();
+  }
 }

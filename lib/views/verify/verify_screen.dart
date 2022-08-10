@@ -74,9 +74,22 @@ class _VerifyScreenState extends State<VerifyScreen> {
                       context.read<AuthCubit>().sendEmailVerification();
                     },
                     icon: const Icon(Icons.email_outlined),
-                    label: const AutoSizeText('ارسال رسالة أخري'),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size.fromHeight(60),
+                    label: const AutoSizeText(
+                      'ارسال رسالة أخري',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        const Color(0xff336B87),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: const BorderSide(
+                            color: Color(0xff336B87),
+                          ),
+                        ),
+                      ),
                     ),
                   )
                 ],

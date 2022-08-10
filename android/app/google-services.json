@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "92374351301",
-    "project_id": "naseha-47bcc",
-    "storage_bucket": "naseha-47bcc.appspot.com"
+    "project_number": "129575566326",
+    "project_id": "naseha-bb435",
+    "storage_bucket": "naseha-bb435.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:92374351301:android:754eef4d1497b6671edfac",
+        "mobilesdk_app_id": "1:129575566326:android:91f82f57f615038d6925d7",
         "android_client_info": {
           "package_name": "com.example.naseha"
         }
       },
       "oauth_client": [
         {
-          "client_id": "92374351301-4knvegjm9gg6om4qa48ertg6k1461bb2.apps.googleusercontent.com",
+          "client_id": "129575566326-cpumamq33u7b0uh8qnpg0q2o4gkknjcs.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyByasfShOtfOkb2GLjfpBYonUfjfjZQcXI"
+          "current_key": "AIzaSyA3vL_geElZV8LWqYH1KlVDLhdE-6z1s84"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "92374351301-4knvegjm9gg6om4qa48ertg6k1461bb2.apps.googleusercontent.com",
+              "client_id": "129575566326-cpumamq33u7b0uh8qnpg0q2o4gkknjcs.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

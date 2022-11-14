@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:naseha/views/shared/rounded_clipper.dart';
 
 class RegisterFormWidget extends StatelessWidget {
-  RegisterFormWidget({
+  const RegisterFormWidget({
     Key? key,
     required this.emailController,
     required this.passwordController,
@@ -11,7 +11,7 @@ class RegisterFormWidget extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
 
-  final formKey = GlobalKey<FormState>();
+  static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool emailValidator({required String email}) => RegExp(
           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
       .hasMatch(email);

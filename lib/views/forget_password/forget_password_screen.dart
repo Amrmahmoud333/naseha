@@ -6,7 +6,7 @@ import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
 class ForgetPasswordScreen extends StatelessWidget {
   ForgetPasswordScreen({Key? key}) : super(key: key);
 
-  final formKey = GlobalKey<FormState>();
+  static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
 
   bool emailValidator({required String email}) => RegExp(

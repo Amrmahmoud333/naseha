@@ -5,7 +5,7 @@ import 'package:naseha/data/firebase_services/firebase_auth.dart';
 import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
 import 'package:naseha/views/auth/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:naseha/views/verify/verify_screen.dart';
+import 'package:naseha/views/home_page/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return const VerifyScreen();
+                return const HomePage();
               } else {
                 return const AuthPage();
               }

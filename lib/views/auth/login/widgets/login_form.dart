@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:naseha/views/shared/rounded_clipper.dart';
 
 class LoginFormWidget extends StatelessWidget {
-  LoginFormWidget({
+  const LoginFormWidget({
     Key? key,
     required this.emailController,
     required this.passwordController,
@@ -10,10 +10,13 @@ class LoginFormWidget extends StatelessWidget {
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
-  final formKey = GlobalKey<FormState>();
+
+  static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   bool emailValidator({required String email}) => RegExp(
           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
       .hasMatch(email);
+
   @override
   Widget build(BuildContext context) {
     double h(double n) {
@@ -73,7 +76,7 @@ class LoginFormWidget extends StatelessWidget {
                   textInputAction: TextInputAction.next,
                   obscureText: true,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: ((value) => value != null && value.length > 7
+                  validator: ((value) => value != null && value.length < 7
                       ? 'Enter more than 7 characters'
                       : null),
                   style: const TextStyle(color: Colors.black),

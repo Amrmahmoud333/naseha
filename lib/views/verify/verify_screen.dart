@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
+import 'package:naseha/views/auth/auth_page.dart';
 import 'package:naseha/views/home_page/home_page.dart';
 
 class VerifyScreen extends StatefulWidget {
@@ -76,6 +77,32 @@ class _VerifyScreenState extends State<VerifyScreen> {
                     icon: const Icon(Icons.email_outlined),
                     label: const AutoSizeText(
                       'ارسال رسالة أخري',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        const Color(0xff336B87),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: const BorderSide(
+                            color: Color(0xff336B87),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 25),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: ((context) => const AuthPage()),
+                      ));
+                    },
+                    icon: const Icon(Icons.email_outlined),
+                    label: const AutoSizeText(
+                      'العودة لتسجيل الدخول',
                       style: TextStyle(fontSize: 15),
                     ),
                     style: ButtonStyle(

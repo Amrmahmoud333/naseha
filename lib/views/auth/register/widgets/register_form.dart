@@ -75,7 +75,7 @@ class RegisterFormWidget extends StatelessWidget {
                   textInputAction: TextInputAction.next,
                   obscureText: true,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: ((value) => value != null && value.length > 7
+                  validator: ((value) => value != null && value.length < 7
                       ? 'Enter more than 7 characters'
                       : null),
                   style: const TextStyle(color: Colors.black),

@@ -11,13 +11,18 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._firebaseAuthRepo) : super(AuthInitial());
 
   User? user;
-  Future login({required String email, required String password}) async {
+  Future login(
+      {required String email,
+      required String password,
+      BuildContext? context}) async {
     emit(LoginLoading());
     try {
       await _firebaseAuthRepo.login(email: email, password: password);
       user = FirebaseAuth.instance.currentUser;
       emit(LoginSccuess());
     } on FirebaseAuthException catch (error) {
+      ScaffoldMessenger.of(context!).showSnackBar(const SnackBar(
+          content: Text('هناك خطأ بالبريد الالكتروني أو كلمة المرور')));
       print(error);
       emit(LoginError());
     } catch (error) {
@@ -43,6 +48,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(RegisterLoading());
     try {
       await _firebaseAuthRepo.register(email: email, password: password);
+      print('object');
       emit(RegisterSccuess());
     } on FirebaseAuthException catch (error) {
       print(error.toString());

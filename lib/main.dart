@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.hasData &&
                   FirebaseAuth.instance.currentUser!.emailVerified) {
-                return const HomePage();
+                return HomePage();
               } else if (snapshot.hasData &&
                   !(FirebaseAuth.instance.currentUser!.emailVerified)) {
                 return const VerifyScreen();

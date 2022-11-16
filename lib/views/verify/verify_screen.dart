@@ -47,7 +47,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
   @override
   Widget build(BuildContext context) {
     return isEmailVerified
-        ? const HomePage()
+        ? HomePage()
         : Scaffold(
             backgroundColor: const Color(0xff90AFC5),
             appBar: AppBar(

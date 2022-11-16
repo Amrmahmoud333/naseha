@@ -46,7 +46,8 @@ class ElevatedLoginButton extends StatelessWidget {
               onPressed: () {
                 context.read<AuthCubit>().login(
                     email: emailController.text.trim(),
-                    password: passwordController.text.trim());
+                    password: passwordController.text.trim(),
+                    context: context);
               },
               child: state is LoginLoading
                   ? SizedBox(

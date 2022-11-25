@@ -1,7 +1,4 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
 import 'package:naseha/views/auth/auth_page.dart';
 import 'package:naseha/views/news_feed/news_feed.dart';
 import 'package:naseha/views/verify/verify_screen.dart';
@@ -17,7 +14,7 @@ class HomePage extends StatelessWidget {
     return PersistentTabView(
       context,
       controller: _controller,
-      screens: [const NewsFeedScreen(), const AuthPage(), const VerifyScreen()],
+      screens: const [NewsFeedScreen(), AuthPage(), VerifyScreen()],
       items: _navBarsItems(),
       navBarStyle: NavBarStyle.neumorphic,
       confineInSafeArea: true,

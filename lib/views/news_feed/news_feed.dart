@@ -15,11 +15,11 @@ class NewsFeedScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(actions: const [Icon(Icons.search)]),
-      backgroundColor: Colors.grey[350],
+      backgroundColor: Colors.white,
       body: ListView.separated(
         separatorBuilder: (context, index) => Container(
           height: 5,
-          color: Colors.white,
+          color: Colors.grey[350],
         ),
         itemCount: 5,
         itemBuilder: ((context, index) {
@@ -42,20 +42,50 @@ class NewsFeedScreen extends StatelessWidget {
                         ),
                         SizedBox(width: h(15)),
                         // TODO name
-                        const Text(
-                          'عمرو',
-                          style: TextStyle(fontSize: 18),
+                        Padding(
+                          padding: EdgeInsets.only(top: h(8)),
+                          child: const Text(
+                            'Amr Mahmoud',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ),
                       ],
                     ),
+                    SizedBox(height: h(3)),
                     Container(
                       width: w(390),
                       height: h(150),
-                      child: Text(
+                      color: Colors.amber,
+                      child: const Text(
                         'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.',
-                        overflow: TextOverflow.clip,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 4,
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w500),
                       ),
-                    )
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          height: h(20),
+                          width: w(200 / 3),
+                          color: Colors.green,
+                          child: Text('dfsddf'),
+                        ),
+                        Container(
+                          height: h(20),
+                          width: w(395 / 3),
+                          color: Colors.green,
+                          child: Text('dfsddf'),
+                        ),
+                        Container(
+                          height: h(20),
+                          width: w(395 / 3),
+                          color: Colors.green,
+                          child: Text('dfsddf'),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:naseha/views/auth/auth_page.dart';
-import 'package:naseha/views/news_feed/news_feed.dart';
+import 'package:naseha/views/news_feed/screen/news_feed.dart';
 import 'package:naseha/views/verify/verify_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 

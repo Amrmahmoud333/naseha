@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:naseha/views/add_naseha/screen/add_naseha_screen.dart';
 import 'package:naseha/views/auth/auth_page.dart';
 import 'package:naseha/views/news_feed/screen/news_feed.dart';
 import 'package:naseha/views/verify/verify_screen.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
     return PersistentTabView(
       context,
       controller: _controller,
-      screens: const [NewsFeedScreen(), AuthPage(), VerifyScreen()],
+      screens: const [NewsFeedScreen(), AddNasehaScreen(), VerifyScreen()],
       items: _navBarsItems(),
       navBarStyle: NavBarStyle.neumorphic,
       confineInSafeArea: true,

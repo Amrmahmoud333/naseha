@@ -19,27 +19,39 @@ class UpDownShare extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        SizedBox(
+        InkWell(
+          onTap: () {},
+          child: SizedBox(
+              height: h(55),
+              width: w(340 / 3),
+              child: Column(
+                children: const [
+                  Icon(Icons.arrow_circle_up),
+                  AutoSizeText('10'),
+                ],
+              )),
+        ),
+        InkWell(
+          onTap: () {},
+          child: SizedBox(
             height: h(55),
             width: w(340 / 3),
             child: Column(
               children: const [
-                Icon(Icons.arrow_circle_up),
-                AutoSizeText('10'),
+                Icon(Icons.arrow_circle_down),
+                AutoSizeText('10')
               ],
-            )),
-        SizedBox(
-          height: h(55),
-          width: w(340 / 3),
-          child: Column(
-            children: const [Icon(Icons.arrow_circle_down), AutoSizeText('10')],
+            ),
           ),
         ),
-        SizedBox(
-          height: h(55),
-          width: w(340 / 3),
-          child: Column(
-            children: const [Icon(Icons.share), AutoSizeText('مشاركة')],
+        InkWell(
+          onTap: () {},
+          child: SizedBox(
+            height: h(55),
+            width: w(340 / 3),
+            child: Column(
+              children: const [Icon(Icons.share), AutoSizeText('مشاركة')],
+            ),
           ),
         ),
       ],

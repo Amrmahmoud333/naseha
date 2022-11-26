@@ -30,22 +30,25 @@ class NewsFeedScreen extends StatelessWidget {
         itemBuilder: ((context, index) {
           return Directionality(
             textDirection: TextDirection.rtl,
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(w(8), h(1), w(8), 0),
-              child: Container(
-                height: h(360),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Tags(),
-                    const UserInfomation(),
-                    SizedBox(height: h(3)),
-                    const TextWidget(),
-                    const UpDownShare(),
-                  ],
+            child: InkWell(
+              onTap: () {},
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(w(8), h(1), w(8), 0),
+                child: Container(
+                  height: h(360),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Tags(),
+                      const UserInfomation(),
+                      SizedBox(height: h(3)),
+                      const TextWidget(),
+                      const UpDownShare(),
+                    ],
+                  ),
                 ),
               ),
             ),

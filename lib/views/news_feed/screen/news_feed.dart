@@ -31,28 +31,27 @@ class NewsFeedScreen extends StatelessWidget {
         itemBuilder: ((context, index) {
           return Directionality(
             textDirection: TextDirection.rtl,
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: ((context) => const NasehaScreen())));
-              },
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(w(8), h(1), w(8), 0),
-                child: Container(
-                  height: h(360),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Tags(),
-                      const UserInfomation(),
-                      SizedBox(height: h(3)),
-                      const TextWidget(),
-                      const UpDownShare(),
-                    ],
-                  ),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(w(8), h(1), w(8), 0),
+              child: Container(
+                height: h(360),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Tags(),
+                    const UserInfomation(),
+                    SizedBox(height: h(3)),
+                    InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: ((context) => const NasehaScreen())));
+                        },
+                        child: const TextWidget()),
+                    const UpDownShare(),
+                  ],
                 ),
               ),
             ),

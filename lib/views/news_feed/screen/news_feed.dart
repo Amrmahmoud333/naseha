@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:naseha/views/naseha/screen/naseha_screen.dart';
 import 'package:naseha/views/news_feed/widgets/text_widget.dart';
 import 'package:naseha/views/news_feed/widgets/up_down_share.dart';
 import 'package:naseha/views/news_feed/widgets/user_information.dart';
@@ -31,7 +32,10 @@ class NewsFeedScreen extends StatelessWidget {
           return Directionality(
             textDirection: TextDirection.rtl,
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: ((context) => const NasehaScreen())));
+              },
               child: Padding(
                 padding: EdgeInsets.fromLTRB(w(8), h(1), w(8), 0),
                 child: Container(

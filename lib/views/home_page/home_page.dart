@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:naseha/views/add_naseha/screen/add_naseha_screen.dart';
-import 'package:naseha/views/auth/auth_page.dart';
 import 'package:naseha/views/news_feed/screen/news_feed.dart';
 import 'package:naseha/views/verify/verify_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
-  PersistentTabController _controller =
+  final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
 
   @override
@@ -19,14 +18,14 @@ class HomePage extends StatelessWidget {
       items: _navBarsItems(),
       navBarStyle: NavBarStyle.neumorphic,
       confineInSafeArea: true,
-      backgroundColor: const Color(0xff90AFC5),
+      backgroundColor: Colors.black54,
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
       hideNavigationBarWhenKeyboardShows: true,
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Colors.white,
+        colorBehindNavBar: const Color(0xFFD6D6D6),
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
@@ -48,19 +47,19 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
     PersistentBottomNavBarItem(
       icon: const Icon(Icons.newspaper),
       title: ('Home'),
-      activeColorPrimary: const Color(0xff336B87),
+      activeColorPrimary: Colors.grey,
       inactiveColorPrimary: Colors.white,
     ),
     PersistentBottomNavBarItem(
       icon: const Icon(Icons.add),
       title: ('add'),
-      activeColorPrimary: const Color(0xff336B87),
+      activeColorPrimary: Colors.grey,
       inactiveColorPrimary: Colors.white,
     ),
     PersistentBottomNavBarItem(
       icon: const Icon(Icons.settings),
       title: ('Settings'),
-      activeColorPrimary: const Color(0xff336B87),
+      activeColorPrimary: Colors.grey,
       inactiveColorPrimary: Colors.white,
     ),
   ];

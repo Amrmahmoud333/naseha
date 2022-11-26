@@ -20,7 +20,12 @@ class NewsFeedScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(actions: const [Icon(Icons.search)]),
+      appBar: AppBar(backgroundColor: Colors.black54, actions: [
+        Icon(
+          Icons.search,
+          color: Colors.grey[200],
+        ),
+      ]),
       backgroundColor: Colors.grey[350],
       body: ListView.separated(
         separatorBuilder: (context, index) => Container(

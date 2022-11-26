@@ -17,8 +17,13 @@ class NasehaScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      appBar: AppBar(actions: const [Icon(Icons.search)]),
+      backgroundColor: Colors.grey[350],
+      appBar: AppBar(backgroundColor: Colors.black54, actions: [
+        Icon(
+          Icons.search,
+          color: Colors.grey[200],
+        ),
+      ]),
       body: SingleChildScrollView(
         child: Directionality(
           textDirection: TextDirection.rtl,

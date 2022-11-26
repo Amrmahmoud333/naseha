@@ -15,7 +15,13 @@ class AddNasehaScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(actions: const [Icon(Icons.search)]),
+      appBar: AppBar(backgroundColor: Colors.black54, actions: [
+        Icon(
+          Icons.search,
+          color: Colors.grey[200],
+        ),
+      ]),
+      backgroundColor: Colors.grey[200],
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: SingleChildScrollView(
@@ -31,17 +37,14 @@ class AddNasehaScreen extends StatelessWidget {
                   maxLines: null,
                   style: const TextStyle(
                     fontSize: 25,
-                    color: Color(0xFF6E75A0),
+                    color: Colors.black,
                     fontWeight: FontWeight.w500,
                   ),
                   keyboardType: TextInputType.multiline,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                     hintText: 'أضف نصاً...',
-                    hintStyle: TextStyle(
-                      fontSize: 20.0,
-                      color: Color(0xFF6E75A0),
-                    ),
+                    hintStyle: TextStyle(fontSize: 20.0, color: Colors.black),
                   ),
                   onChanged: (text) {},
                 ),
@@ -53,15 +56,12 @@ class AddNasehaScreen extends StatelessWidget {
                 width: w(141),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: const Color.fromARGB(255, 182, 218, 244),
+                  color: Colors.black54,
                 ),
-                child: const Center(
+                child: Center(
                   child: Text(
                     'نشر',
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: Color(0xff5B618A),
-                    ),
+                    style: TextStyle(fontSize: 22, color: Colors.grey[200]),
                   ),
                 ),
               ),
@@ -92,16 +92,16 @@ class AddTag extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: const [
           BoxShadow(
-            color: Color(0xff5B618A),
+            color: Colors.black45,
             blurStyle: BlurStyle.inner,
             spreadRadius: 2,
             blurRadius: 6,
             offset: Offset(-2, -3),
           )
         ],
-        color: const Color.fromARGB(255, 182, 218, 244),
+        color: Colors.grey[300],
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: const Color(0xff5B618A), width: 1),
+        border: Border.all(color: Colors.black, width: 1),
       ),
       child: InkWell(
         onTap: () {},
@@ -111,10 +111,7 @@ class AddTag extends StatelessWidget {
             const Center(
               child: Text(
                 'أضف هاشتاج',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Color(0xff5B618A),
-                ),
+                style: TextStyle(fontSize: 20, color: Colors.black),
               ),
             ),
           ],

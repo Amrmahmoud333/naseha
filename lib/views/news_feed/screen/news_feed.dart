@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:naseha/views/full_naseha/screen/naseha_screen.dart';
+import 'package:naseha/views/news_feed/widgets/paint_tag.dart';
 import 'package:naseha/views/news_feed/widgets/text_widget.dart';
 import 'package:naseha/views/news_feed/widgets/up_down_share.dart';
 import 'package:naseha/views/news_feed/widgets/user_information.dart';
@@ -44,9 +45,9 @@ class NewsFeedScreen extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(30)),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const Tags(),
+                    const CustomTag(),
                     const UserInfomation(),
                     SizedBox(height: h(3)),
                     InkWell(

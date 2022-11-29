@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:naseha/views/add_naseha/screen/add_naseha_screen.dart';
 import 'package:naseha/views/news_feed/screen/news_feed.dart';
-import 'package:naseha/views/verify/verify_screen.dart';
+import 'package:naseha/views/porfile/screen/profile_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
     return PersistentTabView(
       context,
       controller: _controller,
-      screens: const [NewsFeedScreen(), AddNasehaScreen(), VerifyScreen()],
+      screens: const [NewsFeedScreen(), AddNasehaScreen(), ProfileScreen()],
       items: _navBarsItems(),
       navBarStyle: NavBarStyle.neumorphic,
       confineInSafeArea: true,
@@ -57,8 +57,8 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       inactiveColorPrimary: Colors.white,
     ),
     PersistentBottomNavBarItem(
-      icon: const Icon(Icons.settings),
-      title: ('Settings'),
+      icon: const Icon(Icons.person),
+      title: ('Profile'),
       activeColorPrimary: Colors.grey,
       inactiveColorPrimary: Colors.white,
     ),

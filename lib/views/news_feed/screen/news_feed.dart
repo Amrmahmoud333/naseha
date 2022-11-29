@@ -5,8 +5,6 @@ import 'package:naseha/views/news_feed/widgets/text_widget.dart';
 import 'package:naseha/views/news_feed/widgets/up_down_share.dart';
 import 'package:naseha/views/news_feed/widgets/user_information.dart';
 
-import '../widgets/tags.dart';
-
 class NewsFeedScreen extends StatelessWidget {
   const NewsFeedScreen({Key? key}) : super(key: key);
 

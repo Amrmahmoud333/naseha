@@ -11,6 +11,10 @@ class ProfileScreen extends StatelessWidget {
       return MediaQuery.of(context).size.height * (n / 851);
     }
 
+    double w(double n) {
+      return MediaQuery.of(context).size.width * (n / 393);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -28,7 +32,7 @@ class ProfileScreen extends StatelessWidget {
           ClipPath(
             clipper: OvalBottomBorderClipper(),
             child: Container(
-              height: h(380),
+              height: h(450),
               decoration: const BoxDecoration(color: Colors.grey),
             ),
           ),
@@ -36,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
           ClipPath(
             clipper: OvalBottomBorderClipper(),
             child: Container(
-              height: h(380),
+              height: h(450),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(
@@ -51,7 +55,7 @@ class ProfileScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             children: [
               SizedBox(height: h(90)),
-              BuildAvatar(),
+              const BuildAvatar(),
               SizedBox(height: h(10)),
               // name
               const AutoSizeText(
@@ -67,9 +71,51 @@ class ProfileScreen extends StatelessWidget {
               const AutoSizeText(
                 'خريج حاسبات ومعلومات',
                 style: TextStyle(
-                  color: Colors.white70,
+                  color: Colors.white,
                 ),
                 textAlign: TextAlign.center,
+              ),
+              SizedBox(height: h(10)),
+              Card(
+                color: Colors.white,
+                elevation: 0,
+                margin: EdgeInsets.symmetric(vertical: h(8), horizontal: w(32)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(w(10))),
+                child: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text('متابعين'),
+                            SizedBox(height: h(8)),
+                            Text('500'),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text('يتابع'),
+                            SizedBox(height: h(8)),
+                            Text('16'),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text('النصائح'),
+                            SizedBox(height: h(8)),
+                            Text('6'),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           )

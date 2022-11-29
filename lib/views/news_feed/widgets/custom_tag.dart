@@ -5,10 +5,6 @@ class CustomTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
     double w(double n) {
       return MediaQuery.of(context).size.width * (n / 393);
     }
@@ -38,14 +34,14 @@ class CustomTag extends StatelessWidget {
             padding: EdgeInsets.only(left: w(95)),
             child: CustomPaint(
               size: Size(w(80), (w(80) * 0.3333333333333333).toDouble()),
-              painter: RPSCustomPainter(),
+              painter: CustomPainterTag(),
             ),
           ),
           Padding(
             padding: EdgeInsets.only(left: w(165)),
             child: CustomPaint(
               size: Size(w(80), (w(80) * 0.3333333333333333).toDouble()),
-              painter: RPSCustomPainter(),
+              painter: CustomPainterTag(),
             ),
           ),
         ],
@@ -54,11 +50,11 @@ class CustomTag extends StatelessWidget {
   }
 }
 
-class RPSCustomPainter extends CustomPainter {
+class CustomPainterTag extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint0 = Paint()
-      ..color = Colors.green
+      ..color = Colors.black54
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
 
@@ -85,7 +81,7 @@ class FirstTag extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint0 = Paint()
-      ..color = Colors.red
+      ..color = Colors.black54
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
 

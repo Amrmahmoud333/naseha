@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:naseha/views/news_feed/widgets/tags.dart';
+import 'package:naseha/views/news_feed/widgets/custom_tag.dart';
 import 'package:naseha/views/news_feed/widgets/up_down_share.dart';
 import 'package:naseha/views/news_feed/widgets/user_information.dart';
 
@@ -30,7 +30,7 @@ class NasehaScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: h(10)),
-              const Tags(),
+              const CustomTag(),
               SizedBox(height: h(10)),
               const UserInfomation(),
               Padding(

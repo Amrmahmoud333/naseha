@@ -18,7 +18,7 @@ class UserInfomation extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: h(2), right: w(8), left: w(8)),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           CircleAvatar(
             radius: 40,

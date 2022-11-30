@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:naseha/views/porfile/widget/custom_app_bar.dart';
 import 'package:naseha/views/porfile/widget/profile_avatar.dart';
 import 'package:naseha/views/porfile/widget/profile_information.dart';
 import 'package:naseha/views/shared/naseha_widget.dart';
@@ -12,10 +13,6 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double h(double n) {
       return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
     }
 
     return SafeArea(
@@ -80,24 +77,7 @@ class ProfileScreen extends StatelessWidget {
                         const ProfileInformation(),
                       ],
                     ),
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          SizedBox(width: w(35)),
-                          const Text(
-                            'الصفحة الشخصية',
-                            style: TextStyle(color: Colors.white, fontSize: 22),
-                          ),
-                          Icon(
-                            Icons.settings,
-                            size: w(25),
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
-                    ),
+                    const CustomAppBar(),
                   ],
                 ),
               ),
@@ -108,6 +88,7 @@ class ProfileScreen extends StatelessWidget {
                     const NasehaWidget(),
                   ],
                 ),
+              SizedBox(height: h(20)),
             ],
           ),
         ),

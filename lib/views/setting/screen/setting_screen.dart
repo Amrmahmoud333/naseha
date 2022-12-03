@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:naseha/views/setting/widget/change_avatar.dart';
 import 'package:naseha/views/shared/custom_text_field.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -41,54 +42,7 @@ class SettingScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: h(10)),
-                Center(
-                  child: Stack(
-                    children: [
-                      Container(
-                        width: w(130),
-                        height: h(130),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: w(1),
-                            color: Colors.black,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              spreadRadius: w(1),
-                              blurRadius: 1,
-                              color: Colors.black54,
-                            ),
-                          ],
-                          shape: BoxShape.circle,
-                          image: const DecorationImage(
-                            image: NetworkImage(
-                                'https://avatars.githubusercontent.com/u/60432384?v=4'),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: InkWell(
-                          onTap: () {},
-                          child: Container(
-                            height: h(40),
-                            width: w(40),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                width: w(2),
-                              ),
-                              color: Colors.grey[300],
-                            ),
-                            child: const Icon(Icons.edit),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                const ChangeAvatar(),
                 SizedBox(height: h(35)),
                 const CustomTextField(
                     text: 'الاسم', hint: 'الاسم', isPassword: false),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:naseha/views/porfile/screen/profile_screen.dart';
 
 class UserInfomation extends StatelessWidget {
   const UserInfomation({

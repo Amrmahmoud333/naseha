@@ -51,17 +51,20 @@ class AddNasehaScreen extends StatelessWidget {
               ),
               const AddTag(),
               SizedBox(height: h(35)),
-              Container(
-                height: h(45),
-                width: w(141),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.black54,
-                ),
-                child: Center(
-                  child: Text(
-                    'نشر',
-                    style: TextStyle(fontSize: 22, color: Colors.grey[200]),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  height: h(45),
+                  width: w(141),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.black54,
+                  ),
+                  child: Center(
+                    child: Text(
+                      'نشر',
+                      style: TextStyle(fontSize: 22, color: Colors.grey[200]),
+                    ),
                   ),
                 ),
               ),

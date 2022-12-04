@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
 import 'package:naseha/views/add_naseha/widget/add_tag.dart';
 import 'package:naseha/views/news_feed/widgets/user_information.dart';
 
@@ -53,7 +55,15 @@ class AddNasehaScreen extends StatelessWidget {
               const AddTag(),
               SizedBox(height: h(35)),
               InkWell(
-                onTap: () {},
+                onTap: () async {
+                  await context.read<NasehaCubit>().addNaseha(
+                      date: 'date',
+                      posterEmail: 'posterEmail',
+                      text: 'text',
+                      upVote: 10,
+                      downVote: 10,
+                      tags: ['aa', 'aa']);
+                },
                 child: Container(
                   height: h(45),
                   width: w(141),

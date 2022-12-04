@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/data/firebase_services/firebase_auth.dart';
+import 'package:naseha/data/firebase_services/firestore_naseha.dart';
 import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
+import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
 import 'package:naseha/views/auth/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:naseha/views/home_page/home_page.dart';
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<AuthCubit>(
             create: (_) => AuthCubit(FirebaseServicesAuth())),
+        BlocProvider<NasehaCubit>(create: (_) => NasehaCubit(FirestoreNaseha()))
       ],
       child: MaterialApp(
         title: 'Naseha',

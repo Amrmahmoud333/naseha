@@ -5,9 +5,8 @@ import 'package:naseha/data/repositories/naseha_repo.dart';
 class FirestoreNaseha extends NasehaRepo {
   final CollectionReference collection =
       FirebaseFirestore.instance.collection('naseha');
-
   @override
-  Future<void> addNaseha(
+  Future<int> addNaseha(
       {required date,
       required posterEmail,
       required text,
@@ -15,6 +14,7 @@ class FirestoreNaseha extends NasehaRepo {
       required downVote,
       required tags}) async {
     int? code;
+
     DocumentReference documentReference = collection.doc();
     NasehaModel nasehaModel = NasehaModel(
         date: date,
@@ -25,11 +25,12 @@ class FirestoreNaseha extends NasehaRepo {
         tags: tags);
     final data = nasehaModel.toJson();
 
-    var result = await documentReference.set(date).whenComplete(() {
+    var result = await documentReference.set(data).whenComplete(() {
       code = 200;
     }).catchError((error) {
       code = 500;
     });
+    return code!;
   }
 
   @override

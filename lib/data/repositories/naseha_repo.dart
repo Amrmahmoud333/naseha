@@ -1,5 +1,5 @@
 abstract class NasehaRepo {
-  Future<void> addNaseha(
+  Future<int> addNaseha(
       {required date,
       required posterEmail,
       required text,

@@ -22,4 +22,15 @@ class NasehaModel {
     downVote = json['downVote'];
     tags = json['tags'];
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['date'] = date;
+    data['posterEmail'] = posterEmail;
+    data['text'] = text;
+    data['upVote'] = upVote;
+    data['downVote'] = downVote;
+    data['tags'] = tags;
+    return data;
+  }
 }

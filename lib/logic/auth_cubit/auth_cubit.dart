@@ -11,6 +11,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._firebaseAuthRepo) : super(AuthInitial());
 
   User? user;
+  String? email;
   Future login(
       {required String email,
       required String password,
@@ -19,6 +20,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       await _firebaseAuthRepo.login(email: email, password: password);
       user = FirebaseAuth.instance.currentUser;
+      email = user!.email!;
       emit(LoginSccuess());
     } on FirebaseAuthException catch (error) {
       ScaffoldMessenger.of(context!).showSnackBar(const SnackBar(

@@ -23,7 +23,12 @@ class NasehaCubit extends Cubit<NasehaState> {
         downVote: downVote,
         tags: tags);
     if (responseCode == 200) {
-      print('seccuse');
+      print('sccusse');
     }
+  }
+
+  String? text;
+  setText(String text) {
+    this.text = text;
   }
 }

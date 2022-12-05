@@ -25,7 +25,7 @@ class FirestoreNaseha extends NasehaRepo {
         tags: tags);
     final data = nasehaModel.toJson();
 
-    var result = await documentReference.set(data).whenComplete(() {
+    await documentReference.set(data).whenComplete(() {
       code = 200;
     }).catchError((error) {
       code = 500;

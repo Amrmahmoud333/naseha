@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomTag extends StatelessWidget {
-  const CustomTag({Key? key}) : super(key: key);
-
+  const CustomTag({Key? key, required this.tagColor, required this.text})
+      : super(key: key);
+  final Color tagColor;
+  final String text;
   @override
   Widget build(BuildContext context) {
     double w(double n) {
@@ -21,7 +23,7 @@ class CustomTag extends StatelessWidget {
               children: [
                 CustomPaint(
                   size: Size(w(80), (w(80) * 0.3333333333333333).toDouble()),
-                  painter: FirstTag(),
+                  painter: FirstTag(tagColor: tagColor),
                 ),
                 const Text(
                   'سفر',
@@ -34,14 +36,14 @@ class CustomTag extends StatelessWidget {
             padding: EdgeInsets.only(left: w(95)),
             child: CustomPaint(
               size: Size(w(80), (w(80) * 0.3333333333333333).toDouble()),
-              painter: CustomPainterTag(),
+              painter: CustomPainterTag(tagColor: tagColor),
             ),
           ),
           Padding(
             padding: EdgeInsets.only(left: w(165)),
             child: CustomPaint(
               size: Size(w(80), (w(80) * 0.3333333333333333).toDouble()),
-              painter: CustomPainterTag(),
+              painter: CustomPainterTag(tagColor: tagColor),
             ),
           ),
         ],
@@ -51,10 +53,12 @@ class CustomTag extends StatelessWidget {
 }
 
 class CustomPainterTag extends CustomPainter {
+  CustomPainterTag({required this.tagColor});
+  final Color tagColor;
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint0 = Paint()
-      ..color = Colors.black54
+      ..color = tagColor
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
 
@@ -78,10 +82,12 @@ class CustomPainterTag extends CustomPainter {
 }
 
 class FirstTag extends CustomPainter {
+  FirstTag({required this.tagColor});
+  final Color tagColor;
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint0 = Paint()
-      ..color = Colors.black54
+      ..color = tagColor
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
 

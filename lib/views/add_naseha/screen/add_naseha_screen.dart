@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
 import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
 import 'package:naseha/views/add_naseha/widget/add_tag.dart';
 import 'package:naseha/views/news_feed/widgets/user_information.dart';
@@ -62,12 +61,14 @@ class AddNasehaScreen extends StatelessWidget {
               InkWell(
                 onTap: () async {
                   await cubit.addNaseha(
-                      date: DateTime.now().toString(),
-                      posterEmail: FirebaseAuth.instance.currentUser!.email,
-                      text: cubit.text,
-                      upVote: 0,
-                      downVote: 0,
-                      tags: ['aa', 'aa']);
+                    date: DateTime.now().toString(),
+                    posterEmail: FirebaseAuth.instance.currentUser!.email,
+                    text: cubit.text,
+                    upVote: 0,
+                    downVote: 0,
+                    tags: ['aa', 'aa'],
+                  );
+                  Navigator.pop(context);
                 },
                 child: Container(
                   height: h(45),

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CustomTag extends StatelessWidget {
-  const CustomTag({Key? key, required this.tagColor, required this.text})
+  const CustomTag(
+      {Key? key,
+      required this.tagColor,
+      required this.text,
+      required this.count})
       : super(key: key);
   final Color tagColor;
   final String text;
+  final int count;
   @override
   Widget build(BuildContext context) {
     double w(double n) {
@@ -16,36 +21,25 @@ class CustomTag extends StatelessWidget {
       child: Stack(
         alignment: Alignment.topLeft,
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: w(25)),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                CustomPaint(
-                  size: Size(w(80), (w(80) * 0.3333333333333333).toDouble()),
-                  painter: FirstTag(tagColor: tagColor),
-                ),
-                const Text(
-                  'سفر',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
+          for (int i = 0; i < count; i++)
+            Padding(
+              padding: EdgeInsets.only(left: w(25 + (i * 70))),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  CustomPaint(
+                    size: Size(w(80), (w(80) * 0.3333333333333333).toDouble()),
+                    painter: i == 0
+                        ? FirstTag(tagColor: tagColor)
+                        : CustomPainterTag(tagColor: tagColor),
+                  ),
+                  Text(
+                    text,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: w(95)),
-            child: CustomPaint(
-              size: Size(w(80), (w(80) * 0.3333333333333333).toDouble()),
-              painter: CustomPainterTag(tagColor: tagColor),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: w(165)),
-            child: CustomPaint(
-              size: Size(w(80), (w(80) * 0.3333333333333333).toDouble()),
-              painter: CustomPainterTag(tagColor: tagColor),
-            ),
-          ),
         ],
       ),
     );

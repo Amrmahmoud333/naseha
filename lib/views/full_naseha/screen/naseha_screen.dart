@@ -30,7 +30,7 @@ class NasehaScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: h(10)),
-              const CustomTag(tagColor: Colors.yellow, text: 'سفر'),
+              const CustomTag(tagColor: Colors.yellow, text: 'سفر', count: 1),
               SizedBox(height: h(10)),
               const UserInfomation(),
               Padding(

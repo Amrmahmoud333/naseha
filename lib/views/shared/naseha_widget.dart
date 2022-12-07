@@ -31,7 +31,7 @@ class NasehaWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const CustomTag(text: 'سفر', tagColor: Colors.black),
+              const CustomTag(text: 'سفر', tagColor: Colors.black, count: 2),
               const UserInfomation(),
               SizedBox(height: h(3)),
               InkWell(

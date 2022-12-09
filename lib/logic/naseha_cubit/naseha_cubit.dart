@@ -36,15 +36,20 @@ class NasehaCubit extends Cubit<NasehaState> {
   }
 
   // add tags to naseha
-  int numberOfTags = 0;
   List<String>? tags = [];
-  bool choosen = false;
-
+  bool numberOfTags = true;
   chooseTags(String tag) {
-    choosen = !choosen;
-    choosen ? tags!.add(tag) : tags!.remove(tag);
-    choosen ? numberOfTags++ : numberOfTags--;
-
+    if (tags!.contains(tag)) {
+      tags!.remove(tag);
+      numberOfTags = true;
+    } else {
+      if (tags!.length < 3) {
+        tags!.add(tag);
+        numberOfTags = true;
+      } else {
+        numberOfTags = false;
+      }
+    }
     emit(AddTagState());
   }
 }

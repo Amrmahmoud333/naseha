@@ -45,9 +45,9 @@ class ChooseTag extends StatelessWidget {
               SizedBox(height: h(25)),
               Row(
                 children: const [
-                  TagList(text: 'رياضة'),
-                  TagList(text: 'كرة قدم'),
-                  TagList(text: 'تسوق'),
+                  TagList(text: 'تعليم'),
+                  TagList(text: 'سياحة'),
+                  TagList(text: 'سفر'),
                 ],
               ),
               SizedBox(height: h(25)),
@@ -87,6 +87,18 @@ class ChooseTag extends StatelessWidget {
                       ],
                     ),
                   );
+                },
+              ),
+              BlocBuilder<NasehaCubit, NasehaState>(
+                builder: (context, state) {
+                  return !cubit.numberOfTags
+                      ? const Directionality(
+                          textDirection: TextDirection.rtl,
+                          child: Text(
+                            'لا يمكنك اختيار أكثر من ثلاث أوسام',
+                            style: TextStyle(color: Colors.redAccent),
+                          ))
+                      : const SizedBox();
                 },
               ),
               SizedBox(height: h(25)),

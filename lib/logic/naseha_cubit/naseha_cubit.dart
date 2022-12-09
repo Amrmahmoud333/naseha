@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:naseha/data/repositories/naseha_repo.dart';
 
@@ -30,5 +33,18 @@ class NasehaCubit extends Cubit<NasehaState> {
   String? text;
   setText(String text) {
     this.text = text;
+  }
+
+  // add tags to naseha
+  int numberOfTags = 0;
+  List<String>? tags = [];
+  bool choosen = false;
+
+  chooseTags(String tag) {
+    choosen = !choosen;
+    choosen ? tags!.add(tag) : tags!.remove(tag);
+    choosen ? numberOfTags++ : numberOfTags--;
+
+    emit(AddTagState());
   }
 }

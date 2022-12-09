@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
 import 'package:naseha/views/add_naseha/widget/tag_list.dart';
 
 class ChooseTag extends StatelessWidget {
@@ -16,6 +18,7 @@ class ChooseTag extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    NasehaCubit cubit = context.read<NasehaCubit>();
     return Directionality(
       textDirection: TextDirection.rtl,
       child: AlertDialog(
@@ -26,25 +29,25 @@ class ChooseTag extends StatelessWidget {
               SizedBox(height: h(25)),
               Row(
                 children: const [
-                  TagList(color: Colors.black, text: 'رياضة'),
-                  TagList(color: Colors.red, text: 'كورة قدم'),
-                  TagList(color: Colors.green, text: 'تسوق'),
+                  TagList(text: 'رياضة'),
+                  TagList(text: 'كورة قدم'),
+                  TagList(text: 'تسوق'),
                 ],
               ),
               SizedBox(height: h(25)),
               Row(
                 children: const [
-                  TagList(color: Colors.black, text: 'هندسة'),
-                  TagList(color: Colors.red, text: 'برمجة'),
-                  TagList(color: Colors.green, text: 'دين'),
+                  TagList(text: 'هندسة'),
+                  TagList(text: 'برمجة'),
+                  TagList(text: 'دين'),
                 ],
               ),
               SizedBox(height: h(25)),
               Row(
                 children: const [
-                  TagList(color: Colors.black, text: 'رياضة'),
-                  TagList(color: Colors.red, text: 'كرة قدم'),
-                  TagList(color: Colors.green, text: 'تسوق'),
+                  TagList(text: 'رياضة'),
+                  TagList(text: 'كرة قدم'),
+                  TagList(text: 'تسوق'),
                 ],
               ),
               SizedBox(height: h(25)),
@@ -73,12 +76,18 @@ class ChooseTag extends StatelessWidget {
               ),
               SizedBox(height: h(10)),
               // choosen tags
-              Row(
-                children: const [
-                  TagList(color: Colors.black, text: 'رياضة'),
-                  TagList(color: Colors.red, text: 'كرة قدم'),
-                  TagList(color: Colors.green, text: 'تسوق'),
-                ],
+              BlocBuilder<NasehaCubit, NasehaState>(
+                builder: (context, state) {
+                  return Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Row(
+                      children: [
+                        for (int i = 0; i < cubit.tags!.length; i++)
+                          TagList(text: cubit.tags![i]),
+                      ],
+                    ),
+                  );
+                },
               ),
               SizedBox(height: h(25)),
               ElevatedButton(

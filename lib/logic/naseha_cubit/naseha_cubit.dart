@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
@@ -30,6 +28,7 @@ class NasehaCubit extends Cubit<NasehaState> {
     }
   }
 
+// naseha text
   String? text;
   setText(String text) {
     this.text = text;
@@ -51,5 +50,11 @@ class NasehaCubit extends Cubit<NasehaState> {
       }
     }
     emit(AddTagState());
+  }
+
+  //
+  String? addNewTag;
+  setNewTag({required String text}) {
+    addNewTag = text;
   }
 }

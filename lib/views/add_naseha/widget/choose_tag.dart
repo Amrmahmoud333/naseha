@@ -56,6 +56,9 @@ class ChooseTag extends StatelessWidget {
                 style: TextStyle(fontSize: 18, color: Colors.black),
               ),
               TextField(
+                onChanged: ((value) {
+                  cubit.setNewTag(text: value);
+                }),
                 decoration: InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(vertical: h(15), horizontal: w(25)),
@@ -66,7 +69,9 @@ class ChooseTag extends StatelessWidget {
               ),
               SizedBox(height: h(10)),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  cubit.chooseTags(cubit.addNewTag!);
+                },
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.black)),
                 child: const Icon(

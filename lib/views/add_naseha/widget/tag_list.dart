@@ -28,14 +28,9 @@ class TagList extends StatelessWidget {
             Stack(
               alignment: Alignment.center,
               children: [
-                BlocBuilder<NasehaCubit, NasehaState>(
-                  builder: (context, state) {
-                    return CustomPaint(
-                      size:
-                          Size(w(80), (w(80) * 0.3333333333333333).toDouble()),
-                      painter: CustomPainterTag(tagColor: Colors.black45),
-                    );
-                  },
+                CustomPaint(
+                  size: Size(w(80), (w(80) * 0.3333333333333333).toDouble()),
+                  painter: CustomPainterTag(tagColor: Colors.black45),
                 ),
                 Text(
                   text,

@@ -25,12 +25,14 @@ class NasehaCubit extends Cubit<NasehaState> {
         downVote: downVote,
         tags: tags);
     if (responseCode == 200) {
+      // clear tags
+
       emit(AddNasehaSuccess());
     }
   }
 
 // naseha text
-  String? text;
+  String text = "";
   setText(String text) {
     this.text = text;
   }
@@ -53,9 +55,10 @@ class NasehaCubit extends Cubit<NasehaState> {
     emit(AddTagState());
   }
 
-  //
   String? addNewTag;
   setNewTag({required String text}) {
     addNewTag = text;
   }
+
+  bool valid = true;
 }

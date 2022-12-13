@@ -5,7 +5,6 @@ import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
 import 'package:naseha/views/add_naseha/widget/add_tag.dart';
 import 'package:naseha/views/add_naseha/widget/tag_list.dart';
 import 'package:naseha/views/home_page/home_page.dart';
-import 'package:naseha/views/news_feed/screen/news_feed.dart';
 import 'package:naseha/views/news_feed/widgets/user_information.dart';
 
 class AddNasehaScreen extends StatelessWidget {
@@ -77,20 +76,32 @@ class AddNasehaScreen extends StatelessWidget {
               SizedBox(height: h(35)),
               InkWell(
                 onTap: () async {
-                  await cubit.addNaseha(
-                    date: DateTime.now().toString(),
-                    posterEmail: FirebaseAuth.instance.currentUser!.email,
-                    text: cubit.text,
-                    upVote: 0,
-                    downVote: 0,
-                    tags: cubit.tags,
-                  );
+                  cubit.text.isEmpty
+                      ? {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('برجاء إضافة نص'))),
+                          cubit.valid = false
+                        }
+                      : {
+                          cubit.valid = true,
+                          await cubit.addNaseha(
+                            date: DateTime.now().toString(),
+                            posterEmail:
+                                FirebaseAuth.instance.currentUser!.email,
+                            text: cubit.text,
+                            upVote: 0,
+                            downVote: 0,
+                            tags: cubit.tags,
+                          ),
+                          cubit.tags = [],
+                          cubit.text = '',
+                        };
                   // navaigate with bottom nav bar
-
-                  Navigator.of(context, rootNavigator: true)
-                      .push(MaterialPageRoute(
-                    builder: ((context) => HomePage()),
-                  ));
+                  if (cubit.valid)
+                    Navigator.of(context, rootNavigator: true)
+                        .push(MaterialPageRoute(
+                      builder: ((context) => HomePage()),
+                    ));
                 },
                 child: BlocBuilder<NasehaCubit, NasehaState>(
                   builder: (context, state) {
@@ -107,11 +118,14 @@ class AddNasehaScreen extends StatelessWidget {
                                 color: Colors.white,
                               ),
                             )
-                          : Center(
-                              child: Text(
-                                'نشر',
-                                style: TextStyle(
-                                    fontSize: 22, color: Colors.grey[200]),
+                          : Padding(
+                              padding: EdgeInsets.symmetric(horizontal: w(3)),
+                              child: Center(
+                                child: Text(
+                                  'نشر',
+                                  style: TextStyle(
+                                      fontSize: 22, color: Colors.grey[200]),
+                                ),
                               ),
                             ),
                     );

@@ -5,7 +5,9 @@ import 'package:naseha/views/porfile/screen/profile_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  HomePage({
+    Key? key,
+  }) : super(key: key);
   final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
 

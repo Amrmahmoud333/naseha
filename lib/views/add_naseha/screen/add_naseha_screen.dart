@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
 import 'package:naseha/views/add_naseha/widget/add_tag.dart';
+import 'package:naseha/views/add_naseha/widget/tag_list.dart';
+import 'package:naseha/views/home_page/home_page.dart';
+import 'package:naseha/views/news_feed/screen/news_feed.dart';
 import 'package:naseha/views/news_feed/widgets/user_information.dart';
 
 class AddNasehaScreen extends StatelessWidget {
@@ -32,7 +35,21 @@ class AddNasehaScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: h(24)),
+              SizedBox(height: h(15)),
+              Padding(
+                padding: EdgeInsets.only(left: w(10)),
+                child: BlocBuilder<NasehaCubit, NasehaState>(
+                  builder: (context, state) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        for (int i = 0; i < cubit.tags!.length; i++)
+                          TagList(text: cubit.tags![i]),
+                      ],
+                    );
+                  },
+                ),
+              ),
               const UserInfomation(),
               SizedBox(height: h(16)),
               SizedBox(
@@ -66,23 +83,39 @@ class AddNasehaScreen extends StatelessWidget {
                     text: cubit.text,
                     upVote: 0,
                     downVote: 0,
-                    tags: ['aa', 'aa'],
+                    tags: cubit.tags,
                   );
-                  Navigator.pop(context);
+                  // navaigate with bottom nav bar
+
+                  Navigator.of(context, rootNavigator: true)
+                      .push(MaterialPageRoute(
+                    builder: ((context) => HomePage()),
+                  ));
                 },
-                child: Container(
-                  height: h(45),
-                  width: w(141),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.black54,
-                  ),
-                  child: Center(
-                    child: Text(
-                      'نشر',
-                      style: TextStyle(fontSize: 22, color: Colors.grey[200]),
-                    ),
-                  ),
+                child: BlocBuilder<NasehaCubit, NasehaState>(
+                  builder: (context, state) {
+                    return Container(
+                      height: h(45),
+                      width: w(141),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.black54,
+                      ),
+                      child: state is AddNasehaLoading
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            )
+                          : Center(
+                              child: Text(
+                                'نشر',
+                                style: TextStyle(
+                                    fontSize: 22, color: Colors.grey[200]),
+                              ),
+                            ),
+                    );
+                  },
                 ),
               ),
             ],

@@ -83,14 +83,12 @@ class ChooseTag extends StatelessWidget {
               // choosen tags
               BlocBuilder<NasehaCubit, NasehaState>(
                 builder: (context, state) {
-                  return Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: Row(
-                      children: [
-                        for (int i = 0; i < cubit.tags!.length; i++)
-                          TagList(text: cubit.tags![i]),
-                      ],
-                    ),
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      for (int i = 0; i < cubit.tags!.length; i++)
+                        TagList(text: cubit.tags![i]),
+                    ],
                   );
                 },
               ),
@@ -108,7 +106,9 @@ class ChooseTag extends StatelessWidget {
               ),
               SizedBox(height: h(25)),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context, true);
+                },
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.grey)),
                 child: const Text(

@@ -16,6 +16,7 @@ class NasehaCubit extends Cubit<NasehaState> {
       required upVote,
       required downVote,
       required tags}) async {
+    emit(AddNasehaLoading());
     int responseCode = await _nasehaRepo.addNaseha(
         date: date,
         posterEmail: posterEmail,
@@ -24,7 +25,7 @@ class NasehaCubit extends Cubit<NasehaState> {
         downVote: downVote,
         tags: tags);
     if (responseCode == 200) {
-      print('sccusse');
+      emit(AddNasehaSuccess());
     }
   }
 

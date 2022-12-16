@@ -29,7 +29,6 @@ class NasehaWidget extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.fromLTRB(w(8), h(1), w(8), 0),
         child: Container(
-          height: h(360),
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(30)),
           child: BlocBuilder<NasehaCubit, NasehaState>(
@@ -48,8 +47,10 @@ class NasehaWidget extends StatelessWidget {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: ((context) => const NasehaScreen())));
                       },
-                      child: const TextWidget()),
-                  const UpDownShare(),
+                      child: TextWidget(
+                        index: index,
+                      )),
+                  UpDownShare(index: index),
                 ],
               );
             },

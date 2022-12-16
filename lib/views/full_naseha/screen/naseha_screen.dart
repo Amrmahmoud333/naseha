@@ -50,7 +50,9 @@ class NasehaScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: h(15)),
-              const UpDownShare(),
+              const UpDownShare(
+                index: 0,
+              ),
               SizedBox(height: h(15)),
             ],
           ),

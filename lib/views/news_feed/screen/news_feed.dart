@@ -50,7 +50,8 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
             );
           } else if (state is GetNasehaSuccess) {
             return Padding(
-              padding: EdgeInsets.only(top: h(5), right: w(2.5), left: w(2.5)),
+              padding: EdgeInsets.only(
+                  top: h(5), right: w(2.5), left: w(2.5), bottom: h(11)),
               child: ListView.separated(
                 separatorBuilder: (context, index) => Container(
                   height: h(5),

@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:naseha/data/models/naseha_model.dart';
 import 'package:naseha/data/repositories/naseha_repo.dart';
 
 part 'naseha_state.dart';
@@ -30,8 +34,6 @@ class NasehaCubit extends Cubit<NasehaState> {
       emit(AddNasehaSuccess());
     }
   }
-
-  Future<void> getNaseha() async {}
 
 // naseha text
   String text = "";
@@ -63,4 +65,31 @@ class NasehaCubit extends Cubit<NasehaState> {
   }
 
   bool valid = true;
+
+  // get naseha
+  List<NasehaModel>? listDocument = [];
+  QuerySnapshot? collectionState;
+  Future<void> getNaseha() async {
+    emit(GetNasehaLoading());
+    try {
+      var collection =
+          FirebaseFirestore.instance.collection('naseha').limit(10);
+      await collection.get().then(((value) {
+        collectionState = value;
+        value.docs.forEach((element) {
+          print('getDocuments ${element.data()}');
+          listDocument!.add(NasehaModel.fromJson(element.data()));
+        });
+      }));
+      print(listDocument!.length);
+      if (listDocument!.isEmpty) {
+        emit(GetNasehaEmpty());
+        print(listDocument!.length);
+      }
+      emit(GetNasehaSuccess());
+      print(listDocument!.length);
+    } catch (e) {
+      emit(GetNasehaError());
+    }
+  }
 }

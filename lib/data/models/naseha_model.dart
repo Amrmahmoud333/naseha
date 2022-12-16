@@ -20,7 +20,7 @@ class NasehaModel {
     text = json['text'];
     upVote = json['upVote'];
     downVote = json['downVote'];
-    tags = json['tags'];
+    tags = json['tags'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {

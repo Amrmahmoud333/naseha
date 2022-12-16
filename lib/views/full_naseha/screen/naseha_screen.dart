@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
 import 'package:naseha/views/news_feed/widgets/custom_tag.dart';
 import 'package:naseha/views/news_feed/widgets/up_down_share.dart';
 import 'package:naseha/views/news_feed/widgets/user_information.dart';
@@ -30,7 +32,14 @@ class NasehaScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: h(10)),
-              const CustomTag(tagColor: Colors.yellow, text: 'سفر', count: 1),
+              CustomTag(
+                  tagColor: Colors.yellow,
+                  text: context.read<NasehaCubit>().listDocument![0].tags!,
+                  count: context
+                      .read<NasehaCubit>()
+                      .listDocument![0]
+                      .tags!
+                      .length),
               SizedBox(height: h(10)),
               const UserInfomation(),
               Padding(

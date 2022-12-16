@@ -10,8 +10,9 @@ import 'package:naseha/views/news_feed/widgets/user_information.dart';
 class NasehaWidget extends StatelessWidget {
   const NasehaWidget({
     Key? key,
+    required this.index,
   }) : super(key: key);
-
+  final int index;
   @override
   Widget build(BuildContext context) {
     double h(double n) {
@@ -22,6 +23,7 @@ class NasehaWidget extends StatelessWidget {
       return MediaQuery.of(context).size.width * (n / 393);
     }
 
+    NasehaCubit cubit = context.read<NasehaCubit>();
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Padding(
@@ -36,14 +38,9 @@ class NasehaWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   CustomTag(
-                      text: state is GetNasehaLoading
-                          ? ''
-                          : context
-                              .read<NasehaCubit>()
-                              .listDocument![0]
-                              .tags![0],
+                      text: cubit.listDocument![index].tags!,
                       tagColor: Colors.black,
-                      count: 2),
+                      count: cubit.listDocument![index].tags!.length),
                   const UserInfomation(),
                   SizedBox(height: h(3)),
                   InkWell(

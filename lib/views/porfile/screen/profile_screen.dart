@@ -85,7 +85,9 @@ class ProfileScreen extends StatelessWidget {
                 Column(
                   children: [
                     SizedBox(height: h(5)),
-                    const NasehaWidget(),
+                    const NasehaWidget(
+                      index: 1,
+                    ),
                   ],
                 ),
               SizedBox(height: h(20)),

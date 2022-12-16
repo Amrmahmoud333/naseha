@@ -58,7 +58,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                 ),
                 itemCount: cubit.listDocument!.length,
                 itemBuilder: ((context, index) {
-                  return const NasehaWidget();
+                  return NasehaWidget(index: index);
                 }),
               ),
             );

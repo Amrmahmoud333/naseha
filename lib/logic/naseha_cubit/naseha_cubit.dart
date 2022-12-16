@@ -81,13 +81,11 @@ class NasehaCubit extends Cubit<NasehaState> {
           listDocument!.add(NasehaModel.fromJson(element.data()));
         });
       }));
-      print(listDocument!.length);
+
       if (listDocument!.isEmpty) {
         emit(GetNasehaEmpty());
-        print(listDocument!.length);
       }
       emit(GetNasehaSuccess());
-      print(listDocument!.length);
     } catch (e) {
       emit(GetNasehaError());
     }

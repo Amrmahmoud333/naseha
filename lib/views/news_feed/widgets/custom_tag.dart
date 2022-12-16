@@ -8,7 +8,7 @@ class CustomTag extends StatelessWidget {
       required this.count})
       : super(key: key);
   final Color tagColor;
-  final String text;
+  final List<String> text;
   final int count;
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class CustomTag extends StatelessWidget {
                         : CustomPainterTag(tagColor: tagColor),
                   ),
                   Text(
-                    text,
+                    text[i],
                     style: const TextStyle(color: Colors.white),
                   ),
                 ],

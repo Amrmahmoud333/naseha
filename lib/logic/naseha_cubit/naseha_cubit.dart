@@ -31,6 +31,8 @@ class NasehaCubit extends Cubit<NasehaState> {
     }
   }
 
+  Future<void> getNaseha() async {}
+
 // naseha text
   String text = "";
   setText(String text) {

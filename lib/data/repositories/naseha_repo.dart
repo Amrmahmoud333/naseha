@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 abstract class NasehaRepo {
   Future<int> addNaseha(
       {required date,
@@ -6,6 +8,7 @@ abstract class NasehaRepo {
       required upVote,
       required downVote,
       required tags});
-  Future<void> getNaseha();
+  Stream<QuerySnapshot> getNaseha();
+  Stream<QuerySnapshot> getNasehaPage(DocumentSnapshot lastDoc);
   Future<void> deleteNaseha();
 }

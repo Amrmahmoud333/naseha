@@ -39,7 +39,19 @@ class FirestoreNaseha extends NasehaRepo {
   }
 
   @override
-  Future<void> getNaseha() {
-    throw UnimplementedError();
+  Stream<QuerySnapshot> getNaseha() {
+    return FirebaseFirestore.instance
+        .collection('naseha')
+        .limit(10)
+        .snapshots();
+  }
+
+  @override
+  Stream<QuerySnapshot> getNasehaPage(DocumentSnapshot lastDoc) {
+    return FirebaseFirestore.instance
+        .collection('naseha')
+        .startAfterDocument(lastDoc)
+        .limit(10)
+        .snapshots();
   }
 }

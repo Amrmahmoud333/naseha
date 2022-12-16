@@ -10,3 +10,9 @@ class AddTagState extends NasehaState {}
 class AddNasehaLoading extends NasehaState {}
 
 class AddNasehaSuccess extends NasehaState {}
+
+class GetNasehaLoading extends NasehaState {}
+
+class GetNasehaSuccess extends NasehaState {}
+
+class GetNasehaError extends NasehaState {}

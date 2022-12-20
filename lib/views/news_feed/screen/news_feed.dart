@@ -11,10 +11,23 @@ class NewsFeedScreen extends StatefulWidget {
 }
 
 class _NewsFeedScreenState extends State<NewsFeedScreen> {
+  ScrollController? _chatScrollController;
+
   @override
   initState() {
     super.initState();
     context.read<NasehaCubit>().getNaseha();
+    _chatScrollController = ScrollController()
+      ..addListener(() {
+        if (_chatScrollController!.position.atEdge) {
+          if (_chatScrollController!.position.pixels == 0)
+            print('ListView scrolled to top');
+          else {
+            context.read<NasehaCubit>().getMoreNaseha();
+            print(context.read<NasehaCubit>().listDocument!.length.toString());
+          }
+        }
+      });
   }
 
   @override
@@ -39,7 +52,10 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
       body: BlocBuilder<NasehaCubit, NasehaState>(
         builder: (context, state) {
           if (state is GetNasehaLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+                child: CircularProgressIndicator(
+              color: Colors.black,
+            ));
           } else if (state is GetNasehaEmpty) {
             return const Center(
               child: Text('لا يوجد نصائح'),
@@ -48,23 +64,26 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
             return const Center(
               child: Text('حدث خطأ ما'),
             );
-          } else if (state is GetNasehaSuccess) {
+          } else {
             return Padding(
               padding: EdgeInsets.only(
                   top: h(5), right: w(2.5), left: w(2.5), bottom: h(11)),
               child: ListView.separated(
+                controller: _chatScrollController,
                 separatorBuilder: (context, index) => Container(
                   height: h(5),
                   color: Colors.grey[350],
                 ),
-                itemCount: cubit.listDocument!.length,
+                itemCount: cubit.listDocument!.length + 1,
                 itemBuilder: ((context, index) {
-                  return NasehaWidget(index: index);
+                  if (index == cubit.listDocument!.length) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else {
+                    return NasehaWidget(index: index);
+                  }
                 }),
               ),
             );
-          } else {
-            return const SizedBox();
           }
         },
       ),

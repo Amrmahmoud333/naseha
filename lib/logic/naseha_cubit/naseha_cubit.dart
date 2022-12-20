@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -71,13 +72,14 @@ class NasehaCubit extends Cubit<NasehaState> {
   QuerySnapshot? collectionState;
   Future<void> getNaseha() async {
     emit(GetNasehaLoading());
+    log('loading');
     try {
+      listDocument!.clear();
       var collection =
           FirebaseFirestore.instance.collection('naseha').limit(10);
       await collection.get().then(((value) {
         collectionState = value;
         value.docs.forEach((element) {
-          print('getDocuments ${element.data()}');
           listDocument!.add(NasehaModel.fromJson(element.data()));
         });
       }));
@@ -85,9 +87,42 @@ class NasehaCubit extends Cubit<NasehaState> {
       if (listDocument!.isEmpty) {
         emit(GetNasehaEmpty());
       }
+      log('success');
       emit(GetNasehaSuccess());
     } catch (e) {
+      log('erro');
       emit(GetNasehaError());
+    }
+  }
+
+  QueryDocumentSnapshot<Object?>? checkLastDoc;
+  Future<void> getMoreNaseha() async {
+    emit(GetMoreNasehaLoading());
+    log('more loading');
+    try {
+      print(collectionState!.docs);
+      QueryDocumentSnapshot<Object?> lastDoc =
+          collectionState!.docs[collectionState!.docs.length - 1];
+      print(collectionState!.docs.length);
+      print(lastDoc.id);
+      var collection = FirebaseFirestore.instance
+          .collection('naseha')
+          .startAfterDocument(lastDoc)
+          .limit(10);
+
+      await collection.get().then((value) {
+        collectionState = value;
+
+        value.docs.forEach((element) {
+          listDocument!.add(NasehaModel.fromJson(element.data()));
+        });
+      });
+      print(listDocument!.length);
+      log('more success');
+      emit(GetMoreNasehaSuccess());
+    } catch (e) {
+      emit(GetMoreNasehaError());
+      log(e.toString());
     }
   }
 }

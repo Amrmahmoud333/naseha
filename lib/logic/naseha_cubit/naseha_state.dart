@@ -18,3 +18,9 @@ class GetNasehaSuccess extends NasehaState {}
 class GetNasehaEmpty extends NasehaState {}
 
 class GetNasehaError extends NasehaState {}
+
+class GetMoreNasehaLoading extends NasehaState {}
+
+class GetMoreNasehaSuccess extends NasehaState {}
+
+class GetMoreNasehaError extends NasehaState {}

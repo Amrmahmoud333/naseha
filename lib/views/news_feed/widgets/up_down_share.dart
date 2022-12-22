@@ -25,7 +25,7 @@ class UpDownShare extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            cubit.upIconCilck();
+            cubit.upIconCilck(index: index);
             print('up');
           },
           child: SizedBox(
@@ -36,7 +36,7 @@ class UpDownShare extends StatelessWidget {
                   BlocBuilder<NasehaCubit, NasehaState>(
                       builder: (context, state) {
                     return Icon(Icons.arrow_circle_up,
-                        color: cubit.upIconColor);
+                        color: cubit.listDocument![index].upColor);
                   }),
                   AutoSizeText(cubit.listDocument![index].upVote!.toString()),
                 ],
@@ -44,7 +44,7 @@ class UpDownShare extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            cubit.downIconCilck();
+            cubit.downIconCilck(index: index);
           },
           child: SizedBox(
             height: h(55),
@@ -54,7 +54,7 @@ class UpDownShare extends StatelessWidget {
                 BlocBuilder<NasehaCubit, NasehaState>(
                     builder: (context, stete) {
                   return Icon(Icons.arrow_circle_down,
-                      color: cubit.downIconColor);
+                      color: cubit.listDocument![index].downColor);
                 }),
                 AutoSizeText(cubit.listDocument![index].downVote!.toString())
               ],

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class NasehaModel {
   String? date;
   String? posterEmail;
@@ -5,7 +7,10 @@ class NasehaModel {
   int? upVote;
   int? downVote;
   List<String>? tags;
-
+  Color upColor = Colors.grey;
+  Color downColor = Colors.grey;
+  bool isUpCLicked = false;
+  bool isDownCLicked = false;
   NasehaModel(
       {required this.date,
       required this.posterEmail,

@@ -95,7 +95,6 @@ class NasehaCubit extends Cubit<NasehaState> {
     }
   }
 
-  bool isEnd = false;
   Future<void> getMoreNaseha() async {
     emit(GetMoreNasehaLoading());
 
@@ -131,17 +130,28 @@ class NasehaCubit extends Cubit<NasehaState> {
   Color downIconColor = Colors.grey;
   bool isUpCLicked = false;
   bool isDownClicked = false;
-  upIconCilck() {
-    isUpCLicked = !isUpCLicked;
-
-    isUpCLicked ? upIconColor = Colors.black : upIconColor = Colors.grey;
+  upIconCilck({required int index}) {
+    if (listDocument![index].isDownCLicked) {
+      listDocument![index].isDownCLicked = false;
+      listDocument![index].downColor = Colors.grey;
+    }
+    listDocument![index].isUpCLicked = !listDocument![index].isUpCLicked;
+    listDocument![index].isUpCLicked
+        ? listDocument![index].upColor = Colors.black
+        : listDocument![index].upColor = Colors.grey;
     emit(UpIconClickState());
   }
 
-  downIconCilck() {
-    isDownClicked = !isDownClicked;
+  downIconCilck({required int index}) {
+    if (listDocument![index].isUpCLicked) {
+      listDocument![index].isUpCLicked = false;
+      listDocument![index].upColor = Colors.grey;
+    }
+    listDocument![index].isDownCLicked = !listDocument![index].isDownCLicked;
 
-    isDownClicked ? downIconColor = Colors.black : downIconColor = Colors.grey;
+    listDocument![index].isDownCLicked
+        ? listDocument![index].downColor = Colors.black
+        : listDocument![index].downColor = Colors.grey;
     emit(UpIconClickState());
   }
 }

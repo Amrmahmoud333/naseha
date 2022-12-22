@@ -25,6 +25,6 @@ class GetMoreNasehaSuccess extends NasehaState {}
 
 class GetMoreNasehaError extends NasehaState {}
 
-class HasMoreNaseha extends NasehaState {}
-
 class HasNotMoreNaseha extends NasehaState {}
+
+class UpIconClickState extends NasehaState {}

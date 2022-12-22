@@ -125,4 +125,23 @@ class NasehaCubit extends Cubit<NasehaState> {
       log(e.toString());
     }
   }
+
+  // up down logic
+  Color upIconColor = Colors.grey;
+  Color downIconColor = Colors.grey;
+  bool isUpCLicked = false;
+  bool isDownClicked = false;
+  upIconCilck() {
+    isUpCLicked = !isUpCLicked;
+
+    isUpCLicked ? upIconColor = Colors.black : upIconColor = Colors.grey;
+    emit(UpIconClickState());
+  }
+
+  downIconCilck() {
+    isDownClicked = !isDownClicked;
+
+    isDownClicked ? downIconColor = Colors.black : downIconColor = Colors.grey;
+    emit(UpIconClickState());
+  }
 }

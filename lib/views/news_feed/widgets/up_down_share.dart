@@ -24,25 +24,38 @@ class UpDownShare extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () {
+            cubit.upIconCilck();
+            print('up');
+          },
           child: SizedBox(
               height: h(55),
               width: w(340 / 3),
               child: Column(
                 children: [
-                  const Icon(Icons.arrow_circle_up),
+                  BlocBuilder<NasehaCubit, NasehaState>(
+                      builder: (context, state) {
+                    return Icon(Icons.arrow_circle_up,
+                        color: cubit.upIconColor);
+                  }),
                   AutoSizeText(cubit.listDocument![index].upVote!.toString()),
                 ],
               )),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            cubit.downIconCilck();
+          },
           child: SizedBox(
             height: h(55),
             width: w(340 / 3),
             child: Column(
               children: [
-                const Icon(Icons.arrow_circle_down),
+                BlocBuilder<NasehaCubit, NasehaState>(
+                    builder: (context, stete) {
+                  return Icon(Icons.arrow_circle_down,
+                      color: cubit.downIconColor);
+                }),
                 AutoSizeText(cubit.listDocument![index].downVote!.toString())
               ],
             ),

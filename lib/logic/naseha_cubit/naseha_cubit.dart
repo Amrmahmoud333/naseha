@@ -131,27 +131,38 @@ class NasehaCubit extends Cubit<NasehaState> {
   bool isUpCLicked = false;
   bool isDownClicked = false;
   upIconCilck({required int index}) {
-    if (listDocument![index].isDownCLicked) {
-      listDocument![index].isDownCLicked = false;
-      listDocument![index].downColor = Colors.grey;
+    var item = listDocument![index];
+    if (item.isDownCLicked) {
+      item.isDownCLicked = false;
+      item.downColor = Colors.grey;
+      item.downVote = item.downVote! - 1;
     }
-    listDocument![index].isUpCLicked = !listDocument![index].isUpCLicked;
-    listDocument![index].isUpCLicked
-        ? listDocument![index].upColor = Colors.black
-        : listDocument![index].upColor = Colors.grey;
+    item.isUpCLicked = !item.isUpCLicked;
+
+    item.isUpCLicked
+        ? item.upVote = item.upVote! + 1
+        : item.upVote = item.upVote! - 1;
+
+    item.isUpCLicked ? item.upColor = Colors.black : item.upColor = Colors.grey;
     emit(UpIconClickState());
   }
 
   downIconCilck({required int index}) {
-    if (listDocument![index].isUpCLicked) {
-      listDocument![index].isUpCLicked = false;
-      listDocument![index].upColor = Colors.grey;
+    var item = listDocument![index];
+    if (item.isUpCLicked) {
+      item.isUpCLicked = false;
+      item.upColor = Colors.grey;
+      item.upVote = item.upVote! - 1;
     }
-    listDocument![index].isDownCLicked = !listDocument![index].isDownCLicked;
+    item.isDownCLicked = !item.isDownCLicked;
 
-    listDocument![index].isDownCLicked
-        ? listDocument![index].downColor = Colors.black
-        : listDocument![index].downColor = Colors.grey;
-    emit(UpIconClickState());
+    item.isDownCLicked
+        ? item.downVote = item.downVote! + 1
+        : item.downVote = item.downVote! - 1;
+
+    item.isDownCLicked
+        ? item.downColor = Colors.black
+        : item.downColor = Colors.grey;
+    emit(DownIconClickStete());
   }
 }

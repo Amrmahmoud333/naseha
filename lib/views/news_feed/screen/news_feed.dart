@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
@@ -20,9 +22,9 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
     _chatScrollController = ScrollController()
       ..addListener(() {
         if (_chatScrollController!.position.atEdge) {
-          if (_chatScrollController!.position.pixels == 0)
-            print('ListView scrolled to top');
-          else {
+          if (_chatScrollController!.position.pixels == 0) {
+            log('ListView scrolled to top');
+          } else {
             context.read<NasehaCubit>().getMoreNaseha();
             print(context.read<NasehaCubit>().listDocument!.length.toString());
           }
@@ -74,7 +76,9 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                   height: h(5),
                   color: Colors.grey[350],
                 ),
-                itemCount: cubit.listDocument!.length + 1,
+                itemCount: state is HasNotMoreNaseha
+                    ? cubit.listDocument!.length
+                    : cubit.listDocument!.length + 1,
                 itemBuilder: ((context, index) {
                   if (index == cubit.listDocument!.length) {
                     return const Center(child: CircularProgressIndicator());

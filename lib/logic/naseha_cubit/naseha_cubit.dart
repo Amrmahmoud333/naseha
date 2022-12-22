@@ -79,9 +79,9 @@ class NasehaCubit extends Cubit<NasehaState> {
           FirebaseFirestore.instance.collection('naseha').limit(10);
       await collection.get().then(((value) {
         collectionState = value;
-        value.docs.forEach((element) {
+        for (var element in value.docs) {
           listDocument!.add(NasehaModel.fromJson(element.data()));
-        });
+        }
       }));
 
       if (listDocument!.isEmpty) {
@@ -95,31 +95,31 @@ class NasehaCubit extends Cubit<NasehaState> {
     }
   }
 
-  QueryDocumentSnapshot<Object?>? checkLastDoc;
+  bool isEnd = false;
   Future<void> getMoreNaseha() async {
     emit(GetMoreNasehaLoading());
-    log('more loading');
+
     try {
-      print(collectionState!.docs);
-      QueryDocumentSnapshot<Object?> lastDoc =
-          collectionState!.docs[collectionState!.docs.length - 1];
-      print(collectionState!.docs.length);
-      print(lastDoc.id);
-      var collection = FirebaseFirestore.instance
-          .collection('naseha')
-          .startAfterDocument(lastDoc)
-          .limit(10);
+      if (collectionState!.docs.isNotEmpty) {
+        QueryDocumentSnapshot<Object?> lastDoc =
+            collectionState!.docs[collectionState!.docs.length - 1];
 
-      await collection.get().then((value) {
-        collectionState = value;
+        var collection = FirebaseFirestore.instance
+            .collection('naseha')
+            .startAfterDocument(lastDoc)
+            .limit(10);
 
-        value.docs.forEach((element) {
-          listDocument!.add(NasehaModel.fromJson(element.data()));
+        await collection.get().then((value) {
+          collectionState = value;
+
+          for (var element in value.docs) {
+            listDocument!.add(NasehaModel.fromJson(element.data()));
+          }
         });
-      });
-      print(listDocument!.length);
-      log('more success');
-      emit(GetMoreNasehaSuccess());
+        emit(GetMoreNasehaSuccess());
+      } else {
+        emit(HasNotMoreNaseha());
+      }
     } catch (e) {
       emit(GetMoreNasehaError());
       log(e.toString());

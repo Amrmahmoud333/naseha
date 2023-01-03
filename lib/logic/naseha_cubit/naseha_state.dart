@@ -30,3 +30,11 @@ class HasNotMoreNaseha extends NasehaState {}
 class UpIconClickState extends NasehaState {}
 
 class DownIconClickStete extends NasehaState {}
+
+class UpVoteUdatedSuccess extends NasehaState {}
+
+class UpVoteUdatedError extends NasehaState {}
+
+class DownVoteUdatedSuccess extends NasehaState {}
+
+class DownVoteUdatedError extends NasehaState {}

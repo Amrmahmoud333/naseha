@@ -26,7 +26,6 @@ class UpDownShare extends StatelessWidget {
         InkWell(
           onTap: () {
             cubit.upIconCilck(index: index);
-            print('up');
           },
           child: SizedBox(
               height: h(55),

@@ -126,16 +126,24 @@ class NasehaCubit extends Cubit<NasehaState> {
   }
 
   // up down logic
-  Color upIconColor = Colors.grey;
-  Color downIconColor = Colors.grey;
-  bool isUpCLicked = false;
-  bool isDownClicked = false;
   upIconCilck({required int index}) {
+    QueryDocumentSnapshot<Object?> docId =
+        collectionState!.docs[index]; // dox id
+
     var item = listDocument![index];
     if (item.isDownCLicked) {
       item.isDownCLicked = false;
       item.downColor = Colors.grey;
       item.downVote = item.downVote! - 1;
+      FirebaseFirestore.instance
+          .collection('naseha')
+          .doc(docId.id)
+          .update({'downVote': item.downVote}).then((value) {
+        emit(DownVoteUdatedSuccess());
+      }).catchError((error) {
+        emit(DownVoteUdatedError());
+        log(error.toString());
+      });
     }
     item.isUpCLicked = !item.isUpCLicked;
 
@@ -145,14 +153,37 @@ class NasehaCubit extends Cubit<NasehaState> {
 
     item.isUpCLicked ? item.upColor = Colors.black : item.upColor = Colors.grey;
     emit(UpIconClickState());
+
+    // udate firebase
+
+    FirebaseFirestore.instance
+        .collection('naseha')
+        .doc(docId.id)
+        .update({'upVote': item.upVote}).then((value) {
+      emit(UpVoteUdatedSuccess());
+    }).catchError((error) {
+      emit(UpVoteUdatedError());
+      log(error.toString());
+    });
   }
 
   downIconCilck({required int index}) {
+    QueryDocumentSnapshot<Object?> docId =
+        collectionState!.docs[index]; // dox id
     var item = listDocument![index];
     if (item.isUpCLicked) {
       item.isUpCLicked = false;
       item.upColor = Colors.grey;
       item.upVote = item.upVote! - 1;
+      FirebaseFirestore.instance
+          .collection('naseha')
+          .doc(docId.id)
+          .update({'upVote': item.upVote}).then((value) {
+        emit(UpVoteUdatedSuccess());
+      }).catchError((error) {
+        emit(UpVoteUdatedError());
+        log(error.toString());
+      });
     }
     item.isDownCLicked = !item.isDownCLicked;
 
@@ -164,5 +195,17 @@ class NasehaCubit extends Cubit<NasehaState> {
         ? item.downColor = Colors.black
         : item.downColor = Colors.grey;
     emit(DownIconClickStete());
+
+    // udate firebase
+
+    FirebaseFirestore.instance
+        .collection('naseha')
+        .doc(docId.id)
+        .update({'downVote': item.downVote}).then((value) {
+      emit(DownVoteUdatedSuccess());
+    }).catchError((error) {
+      emit(DownVoteUdatedError());
+      log(error.toString());
+    });
   }
 }

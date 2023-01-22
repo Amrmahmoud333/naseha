@@ -7,12 +7,20 @@ class LogoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CircleAvatar(
-      backgroundImage: NetworkImage(
-          // logo
-          'https://icons-for-free.com/download-icon-avatar+person+profile+user+icon-1320166578424287581_512.png'),
-      maxRadius: 50,
-      backgroundColor: Colors.transparent,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 120),
+      child: Container(
+        height: 100,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          image: const DecorationImage(
+            image: AssetImage(
+              'assets/images/naseha_logo2.png',
+            ),
+            fit: BoxFit.fill,
+          ),
+        ),
+      ),
     );
   }
 }

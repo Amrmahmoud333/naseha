@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class TextWidget extends StatelessWidget {
   const TextWidget({
@@ -10,18 +11,13 @@ class TextWidget extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     return Padding(
-      padding: EdgeInsets.only(right: w(8), left: w(8), bottom: h(10)),
+      padding: EdgeInsets.only(
+          right: size.w(8), left: size.w(8), bottom: size.h(10)),
       child: SizedBox(
-        width: w(390),
+        width: size.w(390),
         child: Text(
           context.read<NasehaCubit>().listDocument![index].text!,
           overflow: TextOverflow.ellipsis,

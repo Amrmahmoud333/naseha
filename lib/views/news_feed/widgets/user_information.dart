@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class UserInfomation extends StatelessWidget {
   const UserInfomation({
@@ -7,16 +8,11 @@ class UserInfomation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     return Padding(
-      padding: EdgeInsets.only(top: h(2), right: w(8), left: w(8)),
+      padding:
+          EdgeInsets.only(top: size.h(2), right: size.w(8), left: size.w(8)),
       child: InkWell(
         // onTap: () {
         //   Navigator.pushReplacement(context,
@@ -31,10 +27,10 @@ class UserInfomation extends StatelessWidget {
               backgroundImage: const NetworkImage(
                   'https://avatars.githubusercontent.com/u/60432384?v=4'),
             ),
-            SizedBox(width: h(15)),
+            SizedBox(width: size.h(15)),
             // TODO name
             Padding(
-              padding: EdgeInsets.only(top: h(8)),
+              padding: EdgeInsets.only(top: size.h(8)),
               child: const Text(
                 'Amr Mahmoud',
                 style: TextStyle(fontSize: 18),

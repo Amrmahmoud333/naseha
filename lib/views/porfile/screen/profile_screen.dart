@@ -5,15 +5,14 @@ import 'package:naseha/views/porfile/widget/custom_app_bar.dart';
 import 'package:naseha/views/porfile/widget/profile_avatar.dart';
 import 'package:naseha/views/porfile/widget/profile_information.dart';
 import 'package:naseha/views/shared/naseha_widget.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
+    final Sizer size = Sizer(context: context);
 
     return SafeArea(
       child: Scaffold(
@@ -24,13 +23,13 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: h(440),
+                height: size.h(440),
                 child: Stack(
                   children: [
                     ClipPath(
                       clipper: OvalBottomBorderClipper(),
                       child: Container(
-                        height: h(440),
+                        height: size.h(440),
                         decoration: const BoxDecoration(color: Colors.grey),
                       ),
                     ),
@@ -38,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
                     ClipPath(
                       clipper: OvalBottomBorderClipper(),
                       child: Container(
-                        height: h(450),
+                        height: size.h(450),
                         decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: NetworkImage(
@@ -52,9 +51,9 @@ class ProfileScreen extends StatelessWidget {
                     ListView(
                       padding: const EdgeInsets.all(8.0),
                       children: [
-                        SizedBox(height: h(90)),
+                        SizedBox(height: size.h(90)),
                         const ProfileAvatar(),
-                        SizedBox(height: h(10)),
+                        SizedBox(height: size.h(10)),
                         // name
                         const AutoSizeText(
                           'Amr Mahmoud',
@@ -64,7 +63,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: h(5)),
+                        SizedBox(height: size.h(5)),
                         // describtion
                         const AutoSizeText(
                           'خريج حاسبات ومعلومات',
@@ -73,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: h(10)),
+                        SizedBox(height: size.h(10)),
                         const ProfileInformation(),
                       ],
                     ),
@@ -84,13 +83,13 @@ class ProfileScreen extends StatelessWidget {
               for (int i = 0; i < 5; i++)
                 Column(
                   children: [
-                    SizedBox(height: h(5)),
+                    SizedBox(height: size.h(5)),
                     const NasehaWidget(
                       index: 1,
                     ),
                   ],
                 ),
-              SizedBox(height: h(20)),
+              SizedBox(height: size.h(20)),
             ],
           ),
         ),

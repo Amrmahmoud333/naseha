@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:naseha/views/setting/screen/setting_screen.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
@@ -8,16 +9,14 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     return Align(
       alignment: Alignment.topCenter,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SizedBox(width: w(35)),
+          SizedBox(width: size.w(35)),
           const Text(
             'الصفحة الشخصية',
             style: TextStyle(color: Colors.white, fontSize: 22),
@@ -25,7 +24,7 @@ class CustomAppBar extends StatelessWidget {
           IconButton(
               icon: Icon(
                 Icons.settings,
-                size: w(25),
+                size: size.w(25),
                 color: Colors.white,
               ),
               onPressed: () {

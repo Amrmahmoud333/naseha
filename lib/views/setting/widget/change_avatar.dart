@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class ChangeAvatar extends StatelessWidget {
   const ChangeAvatar({
@@ -7,28 +8,22 @@ class ChangeAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     return Center(
       child: Stack(
         children: [
           Container(
-            width: w(130),
-            height: h(130),
+            width: size.w(130),
+            height: size.h(130),
             decoration: BoxDecoration(
               border: Border.all(
-                width: w(1),
+                width: size.w(1),
                 color: Colors.black,
               ),
               boxShadow: [
                 BoxShadow(
-                  spreadRadius: w(1),
+                  spreadRadius: size.w(1),
                   blurRadius: 1,
                   color: Colors.black54,
                 ),
@@ -47,12 +42,12 @@ class ChangeAvatar extends StatelessWidget {
             child: InkWell(
               onTap: () {},
               child: Container(
-                height: h(40),
-                width: w(40),
+                height: size.h(40),
+                width: size.w(40),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                    width: w(2),
+                    width: size.w(2),
                   ),
                   color: Colors.grey[300],
                 ),

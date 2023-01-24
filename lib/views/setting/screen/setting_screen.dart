@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:naseha/views/setting/widget/change_avatar.dart';
 import 'package:naseha/views/shared/custom_text_field.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     return Scaffold(
       appBar: AppBar(
@@ -28,22 +23,23 @@ class SettingScreen extends StatelessWidget {
           icon: Icon(
             Icons.arrow_back,
             color: Colors.white,
-            size: w(25),
+            size: size.w(25),
           ),
           onPressed: () => Navigator.pop(context),
         ),
       ),
       backgroundColor: Colors.grey[350],
       body: Padding(
-        padding: EdgeInsets.symmetric(vertical: h(8), horizontal: w(8)),
+        padding:
+            EdgeInsets.symmetric(vertical: size.h(8), horizontal: size.w(8)),
         child: SingleChildScrollView(
           child: Directionality(
             textDirection: TextDirection.rtl,
             child: Column(
               children: [
-                SizedBox(height: h(10)),
+                SizedBox(height: size.h(10)),
                 const ChangeAvatar(),
-                SizedBox(height: h(35)),
+                SizedBox(height: size.h(35)),
                 const CustomTextField(
                     text: 'الاسم', hint: 'الاسم', isPassword: false),
                 const CustomTextField(
@@ -54,12 +50,12 @@ class SettingScreen extends StatelessWidget {
                     text: 'كلمة المرور', hint: '*******', isPassword: true),
                 const CustomTextField(
                     text: 'الاسم', hint: 'الاسم', isPassword: false),
-                SizedBox(height: h(25)),
+                SizedBox(height: size.h(25)),
                 InkWell(
                   onTap: () {},
                   child: Container(
-                    height: h(45),
-                    width: w(141),
+                    height: size.h(45),
+                    width: size.w(141),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.black54,

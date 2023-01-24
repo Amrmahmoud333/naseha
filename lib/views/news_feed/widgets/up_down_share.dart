@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class UpDownShare extends StatelessWidget {
   const UpDownShare({
@@ -11,13 +12,7 @@ class UpDownShare extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     NasehaCubit cubit = context.read<NasehaCubit>();
     return Row(
@@ -28,8 +23,8 @@ class UpDownShare extends StatelessWidget {
             cubit.upIconCilck(index: index);
           },
           child: SizedBox(
-              height: h(55),
-              width: w(340 / 3),
+              height: size.h(55),
+              width: size.w(340 / 3),
               child: Column(
                 children: [
                   BlocBuilder<NasehaCubit, NasehaState>(
@@ -46,8 +41,8 @@ class UpDownShare extends StatelessWidget {
             cubit.downIconCilck(index: index);
           },
           child: SizedBox(
-            height: h(55),
-            width: w(340 / 3),
+            height: size.h(55),
+            width: size.w(340 / 3),
             child: Column(
               children: [
                 BlocBuilder<NasehaCubit, NasehaState>(
@@ -63,8 +58,8 @@ class UpDownShare extends StatelessWidget {
         InkWell(
           onTap: () {},
           child: SizedBox(
-            height: h(55),
-            width: w(340 / 3),
+            height: size.h(55),
+            width: size.w(340 / 3),
             child: Column(
               children: const [Icon(Icons.share), AutoSizeText('مشاركة')],
             ),

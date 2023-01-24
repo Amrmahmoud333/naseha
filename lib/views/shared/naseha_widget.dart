@@ -6,6 +6,7 @@ import 'package:naseha/views/news_feed/widgets/custom_tag.dart';
 import 'package:naseha/views/news_feed/widgets/text_widget.dart';
 import 'package:naseha/views/news_feed/widgets/up_down_share.dart';
 import 'package:naseha/views/news_feed/widgets/user_information.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class NasehaWidget extends StatelessWidget {
   const NasehaWidget({
@@ -15,19 +16,13 @@ class NasehaWidget extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     NasehaCubit cubit = context.read<NasehaCubit>();
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Padding(
-        padding: EdgeInsets.fromLTRB(w(8), h(1), w(8), 0),
+        padding: EdgeInsets.fromLTRB(size.w(8), size.h(1), size.w(8), 0),
         child: Container(
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(30)),
@@ -41,7 +36,7 @@ class NasehaWidget extends StatelessWidget {
                       tagColor: Colors.black,
                       count: cubit.listDocument![index].tags!.length),
                   const UserInfomation(),
-                  SizedBox(height: h(3)),
+                  SizedBox(height: size.h(3)),
                   InkWell(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class CustomTextField extends StatelessWidget {
   final String text, hint;
@@ -12,16 +13,11 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     return Padding(
-      padding: EdgeInsets.only(bottom: h(35), right: w(12), left: w(12)),
+      padding: EdgeInsets.only(
+          bottom: size.h(35), right: size.w(12), left: size.w(12)),
       child: TextField(
         obscureText: isPassword,
         decoration: InputDecoration(
@@ -36,7 +32,7 @@ class CustomTextField extends StatelessWidget {
                   ),
                 )
               : null,
-          contentPadding: EdgeInsets.only(bottom: h(3)),
+          contentPadding: EdgeInsets.only(bottom: size.h(3)),
           labelText: text,
           floatingLabelBehavior: FloatingLabelBehavior.always,
           hintText: hint,

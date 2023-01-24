@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   ForgetPasswordScreen({Key? key}) : super(key: key);
@@ -15,9 +16,7 @@ class ForgetPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
+    final Sizer size = Sizer(context: context);
 
     return Scaffold(
       backgroundColor: const Color(0xff90AFC5),
@@ -49,7 +48,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       ? 'Enter a valid email'
                       : null,
                 ),
-                SizedBox(height: h(20)),
+                SizedBox(height: size.h(20)),
                 BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
                   return ElevatedButton.icon(
                     style: ButtonStyle(

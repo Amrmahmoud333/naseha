@@ -6,6 +6,7 @@ import 'package:naseha/views/add_naseha/widget/add_tag.dart';
 import 'package:naseha/views/add_naseha/widget/tag_list.dart';
 import 'package:naseha/views/home_page/home_page.dart';
 import 'package:naseha/views/news_feed/widgets/user_information.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class AddNasehaScreen extends StatelessWidget {
   const AddNasehaScreen({Key? key}) : super(key: key);
@@ -13,13 +14,7 @@ class AddNasehaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     NasehaCubit cubit = context.read<NasehaCubit>();
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.black54, actions: [
@@ -34,9 +29,9 @@ class AddNasehaScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: h(15)),
+              SizedBox(height: size.h(15)),
               Padding(
-                padding: EdgeInsets.only(left: w(10)),
+                padding: EdgeInsets.only(left: size.w(10)),
                 child: BlocBuilder<NasehaCubit, NasehaState>(
                   builder: (context, state) {
                     return Row(
@@ -50,10 +45,10 @@ class AddNasehaScreen extends StatelessWidget {
                 ),
               ),
               const UserInfomation(),
-              SizedBox(height: h(16)),
+              SizedBox(height: size.h(16)),
               SizedBox(
-                width: w(370),
-                height: h(300),
+                width: size.w(370),
+                height: size.h(300),
                 child: TextField(
                   maxLines: null,
                   style: const TextStyle(
@@ -73,7 +68,7 @@ class AddNasehaScreen extends StatelessWidget {
                 ),
               ),
               const AddTag(),
-              SizedBox(height: h(35)),
+              SizedBox(height: size.h(35)),
               InkWell(
                 onTap: () async {
                   cubit.text.isEmpty
@@ -106,8 +101,8 @@ class AddNasehaScreen extends StatelessWidget {
                 child: BlocBuilder<NasehaCubit, NasehaState>(
                   builder: (context, state) {
                     return Container(
-                      height: h(45),
-                      width: w(141),
+                      height: size.h(45),
+                      width: size.w(141),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.black54,
@@ -119,7 +114,8 @@ class AddNasehaScreen extends StatelessWidget {
                               ),
                             )
                           : Padding(
-                              padding: EdgeInsets.symmetric(horizontal: w(3)),
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: size.w(3)),
                               child: Center(
                                 child: Text(
                                   'نشر',

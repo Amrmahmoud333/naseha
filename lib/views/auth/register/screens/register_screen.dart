@@ -4,6 +4,7 @@ import 'package:naseha/views/auth/register/widgets/elevated_register_button.dart
 import 'package:naseha/views/auth/register/widgets/register_form.dart';
 import 'package:naseha/views/shared/logo_widget.dart';
 import 'package:naseha/views/shared/person_container.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class RegisterScreen extends StatelessWidget {
   final VoidCallback onClickedLogin;
@@ -12,18 +13,16 @@ class RegisterScreen extends StatelessWidget {
   final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
+    final Sizer size = Sizer(context: context);
 
     return Scaffold(
       body: Container(
         color: const Color(0xff90AFC5),
         child: ListView(
           children: [
-            SizedBox(height: h(30)),
+            SizedBox(height: size.h(30)),
             const LogoWidget(),
-            SizedBox(height: h(20)),
+            SizedBox(height: size.h(20)),
             Container(
               padding: const EdgeInsets.all(20),
               child: Stack(

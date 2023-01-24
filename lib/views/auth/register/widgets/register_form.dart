@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:naseha/views/shared/rounded_clipper.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class RegisterFormWidget extends StatelessWidget {
   const RegisterFormWidget({
@@ -18,19 +19,13 @@ class RegisterFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     return ClipPath(
       clipper: RoundedClipper(),
       child: Container(
         padding: const EdgeInsets.all(10),
-        height: h(400),
+        height: size.h(400),
         decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(40)),
             color: Colors.white),
@@ -39,9 +34,9 @@ class RegisterFormWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: h(90)),
+              SizedBox(height: size.h(90)),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: w(20)),
+                padding: EdgeInsets.symmetric(horizontal: size.w(20)),
                 child: TextFormField(
                   controller: emailController,
                   validator: (email) => emailValidator(email: email!)
@@ -62,14 +57,14 @@ class RegisterFormWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                padding:
-                    EdgeInsets.only(left: w(20), right: w(20), bottom: h(10)),
+                padding: EdgeInsets.only(
+                    left: size.w(20), right: size.w(20), bottom: size.h(10)),
                 child: const Divider(
                   color: Color(0xff336B87),
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: w(20)),
+                padding: EdgeInsets.symmetric(horizontal: size.w(20)),
                 child: TextFormField(
                   controller: passwordController,
                   textInputAction: TextInputAction.next,
@@ -93,8 +88,8 @@ class RegisterFormWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                padding:
-                    EdgeInsets.only(left: w(20), right: w(20), bottom: h(10)),
+                padding: EdgeInsets.only(
+                    left: size.w(20), right: size.w(20), bottom: size.h(10)),
                 child: const Divider(
                   color: Color(0xff336B87),
                 ),

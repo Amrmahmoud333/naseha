@@ -6,6 +6,7 @@ import 'package:naseha/views/auth/login/widgets/login_form.dart';
 import 'package:naseha/views/forget_password/forget_password_screen.dart';
 import 'package:naseha/views/shared/logo_widget.dart';
 import 'package:naseha/views/shared/person_container.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class LoginScreen extends StatelessWidget {
   final VoidCallback onClickedRegister;
@@ -16,18 +17,16 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
+    final Sizer size = Sizer(context: context);
 
     return Scaffold(
       body: Container(
         color: const Color(0xff90AFC5),
         child: ListView(
           children: [
-            SizedBox(height: h(30)),
+            SizedBox(height: size.h(30)),
             const LogoWidget(),
-            SizedBox(height: h(20)),
+            SizedBox(height: size.h(20)),
             Container(
               padding: const EdgeInsets.all(20),
               child: Stack(
@@ -57,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: h(10)),
+            SizedBox(height: size.h(10)),
             Center(
               child: RichText(
                 text: TextSpan(

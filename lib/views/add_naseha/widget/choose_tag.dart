@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
 import 'package:naseha/views/add_naseha/widget/tag_list.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class ChooseTag extends StatelessWidget {
   const ChooseTag({
@@ -10,13 +11,7 @@ class ChooseTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     NasehaCubit cubit = context.read<NasehaCubit>();
     return Directionality(
@@ -26,7 +21,7 @@ class ChooseTag extends StatelessWidget {
         content: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: h(25)),
+              SizedBox(height: size.h(25)),
               Row(
                 children: const [
                   TagList(text: 'رياضة'),
@@ -34,7 +29,7 @@ class ChooseTag extends StatelessWidget {
                   TagList(text: 'تسوق'),
                 ],
               ),
-              SizedBox(height: h(25)),
+              SizedBox(height: size.h(25)),
               Row(
                 children: const [
                   TagList(text: 'هندسة'),
@@ -42,7 +37,7 @@ class ChooseTag extends StatelessWidget {
                   TagList(text: 'دين'),
                 ],
               ),
-              SizedBox(height: h(25)),
+              SizedBox(height: size.h(25)),
               Row(
                 children: const [
                   TagList(text: 'تعليم'),
@@ -50,7 +45,7 @@ class ChooseTag extends StatelessWidget {
                   TagList(text: 'سفر'),
                 ],
               ),
-              SizedBox(height: h(25)),
+              SizedBox(height: size.h(25)),
               const Text(
                 'اضافة وسم غير موجود',
                 style: TextStyle(fontSize: 18, color: Colors.black),
@@ -60,14 +55,14 @@ class ChooseTag extends StatelessWidget {
                   cubit.setNewTag(text: value);
                 }),
                 decoration: InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: h(15), horizontal: w(25)),
+                  contentPadding: EdgeInsets.symmetric(
+                      vertical: size.h(15), horizontal: size.w(25)),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(w(32))),
+                    borderRadius: BorderRadius.all(Radius.circular(size.w(32))),
                   ),
                 ),
               ),
-              SizedBox(height: h(10)),
+              SizedBox(height: size.h(10)),
               ElevatedButton(
                 onPressed: () {
                   cubit.chooseTags(cubit.addNewTag!);
@@ -79,7 +74,7 @@ class ChooseTag extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: h(10)),
+              SizedBox(height: size.h(10)),
               // choosen tags
               BlocBuilder<NasehaCubit, NasehaState>(
                 builder: (context, state) {
@@ -104,7 +99,7 @@ class ChooseTag extends StatelessWidget {
                       : const SizedBox();
                 },
               ),
-              SizedBox(height: h(25)),
+              SizedBox(height: size.h(25)),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context, true);

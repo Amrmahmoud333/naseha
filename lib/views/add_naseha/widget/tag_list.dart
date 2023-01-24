@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
 import 'package:naseha/views/news_feed/widgets/custom_tag.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class TagList extends StatelessWidget {
   const TagList({Key? key, required this.text}) : super(key: key);
@@ -9,13 +10,7 @@ class TagList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     return InkWell(
       onTap: () {
@@ -29,7 +24,8 @@ class TagList extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 CustomPaint(
-                  size: Size(w(80), (w(80) * 0.3333333333333333).toDouble()),
+                  size: Size(
+                      size.w(80), (size.w(80) * 0.3333333333333333).toDouble()),
                   painter: CustomPainterTag(tagColor: Colors.black45),
                 ),
                 Text(

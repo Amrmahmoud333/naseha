@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/logic/auth_cubit/auth_cubit.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class ElevatedLoginButton extends StatelessWidget {
   const ElevatedLoginButton({
@@ -15,16 +16,10 @@ class ElevatedLoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     return SizedBox(
-      height: h(420),
+      height: size.h(420),
       child: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {
           return Align(
@@ -51,8 +46,8 @@ class ElevatedLoginButton extends StatelessWidget {
               },
               child: state is LoginLoading
                   ? SizedBox(
-                      width: w(12),
-                      height: h(12),
+                      width: size.w(12),
+                      height: size.h(12),
                       child: const CircularProgressIndicator(
                         color: Colors.white,
                       ),

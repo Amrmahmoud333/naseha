@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:naseha/views/add_naseha/widget/choose_tag.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class AddTag extends StatelessWidget {
   const AddTag({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     return Container(
-      width: w(355),
-      height: h(66),
+      width: size.w(355),
+      height: size.h(66),
       decoration: BoxDecoration(
         boxShadow: const [
           BoxShadow(
@@ -42,7 +37,7 @@ class AddTag extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(width: w(10)),
+            SizedBox(width: size.w(10)),
             const Text(
               'الهاشتاج',
               style: TextStyle(fontSize: 20, color: Colors.black),

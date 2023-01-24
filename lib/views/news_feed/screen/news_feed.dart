@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naseha/logic/naseha_cubit/naseha_cubit.dart';
 import 'package:naseha/views/shared/naseha_widget.dart';
+import 'package:naseha/views/shared/size.dart';
 
 class NewsFeedScreen extends StatefulWidget {
   const NewsFeedScreen({Key? key}) : super(key: key);
@@ -34,13 +35,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double h(double n) {
-      return MediaQuery.of(context).size.height * (n / 851);
-    }
-
-    double w(double n) {
-      return MediaQuery.of(context).size.width * (n / 393);
-    }
+    final Sizer size = Sizer(context: context);
 
     NasehaCubit cubit = context.read<NasehaCubit>();
     return Scaffold(
@@ -69,11 +64,14 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
           } else {
             return Padding(
               padding: EdgeInsets.only(
-                  top: h(5), right: w(2.5), left: w(2.5), bottom: h(11)),
+                  top: size.h(5),
+                  right: size.w(2.5),
+                  left: size.w(2.5),
+                  bottom: size.h(11)),
               child: ListView.separated(
                 controller: _chatScrollController,
                 separatorBuilder: (context, index) => Container(
-                  height: h(5),
+                  height: size.h(5),
                   color: Colors.grey[350],
                 ),
                 itemCount: state is HasNotMoreNaseha
